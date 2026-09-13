@@ -1,0 +1,2299 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pra você</title>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="description" content="Uma historinha em papel recortado, de um campo de girassóis até um envelope subindo no céu.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23F9C63F' stroke='%233C2C1E' stroke-width='5'%3E%3Cpath d='M50,48 C62,40 66,20 50,4 C34,20 38,40 50,48 Z'/%3E%3Cpath d='M50,48 C62,40 66,20 50,4 C34,20 38,40 50,48 Z' transform='rotate(60 50 50)'/%3E%3Cpath d='M50,48 C62,40 66,20 50,4 C34,20 38,40 50,48 Z' transform='rotate(120 50 50)'/%3E%3Cpath d='M50,48 C62,40 66,20 50,4 C34,20 38,40 50,48 Z' transform='rotate(180 50 50)'/%3E%3Cpath d='M50,48 C62,40 66,20 50,4 C34,20 38,40 50,48 Z' transform='rotate(240 50 50)'/%3E%3Cpath d='M50,48 C62,40 66,20 50,4 C34,20 38,40 50,48 Z' transform='rotate(300 50 50)'/%3E%3C/g%3E%3Ccircle cx='50' cy='50' r='18' fill='%237A4A22' stroke='%233C2C1E' stroke-width='5'/%3E%3C/svg%3E">
+
+<!-- Pra o link ficar bonito no WhatsApp, troque o og:image abaixo pelo endereço
+     completo da imagem, por exemplo:
+     https://seu-usuario.github.io/campo-de-girassol/capa.png -->
+<meta property="og:title" content="Pra você">
+<meta property="og:description" content="Oi Moni :)">
+<meta property="og:image" content="capa.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1&family=Grandstander:wght@500;700;900&family=Quicksand:wght@500;600;700&display=swap">
+<style>
+  html{ color-scheme: light; }
+  body{ margin: 0; font: 14px system-ui, sans-serif; }
+  img{ max-width: 100%; }
+  [hidden]{ display: none !important; }
+</style>
+</head>
+<body>
+<style>
+  :root{
+    --papel:       #FFF6E3;
+    --papel-borda: #F0E2C2;
+    --tinta:       #35281D;
+    --moldura:     #3C2C1E;
+    --fundo:       #0F1A14;
+
+    --ceu-alto:    #7FCFE8;
+    --ceu-baixo:   #D9F2EE;
+    --colina-far:  #8FC96B;
+    --colina-mid:  #6FB84A;
+    --campo:       #5DA83C;
+    --campo-esc:   #47862C;
+    --campo-frente:#3E7826;
+    --petala:      #F9C63F;
+    --petala-esc:  #E5A526;
+    --miolo:       #7A4A22;
+    --miolo-claro: #9A6231;
+    --caule:       #3F8A2E;
+    --caule-esc:   #2F6C22;
+
+    --display: "Grandstander", "Trebuchet MS", system-ui, sans-serif;
+    --corpo:   "Quicksand", "Trebuchet MS", system-ui, sans-serif;
+    --carta:   "Fraunces", Georgia, "Times New Roman", serif;
+    --mao:     "Caveat", "Segoe Script", cursive;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background: var(--fundo);
+    color: var(--tinta);
+    font-family: var(--corpo);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- o ato: a cena gruda, o texto rola ---------- */
+  .ato{ position: relative; }
+
+  .cena{
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    min-height: 420px;
+    overflow: hidden;
+    background: var(--ceu-alto);
+  }
+  .cena > svg{
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    display: block;
+  }
+
+
+  /* ---------- parallax nas trocas de cena ---------- */
+  .cena{
+    transform-origin: center center;
+    will-change: transform;
+  }
+  .cena::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #140F1C;
+    opacity: var(--veu, 0);
+    pointer-events: none;
+    z-index: 12;
+  }
+  .cena > svg{ will-change: transform; }
+
+  .passo{ height: 92svh; }
+  .cena.noite{ background: #3A3356; }
+  .cena.palco{ background: #2E211D; }
+  .cena.folha{ background: #2B241F; }
+  .cena.gatinhos{ background: #FFDAC4; }
+
+  /* a brisa na cortina */
+  .brisa  { transform-origin: 600px 40px; animation: brisa 9s ease-in-out infinite; }
+  .brisa-b{ transform-origin: 600px 40px; animation: brisa 9s ease-in-out infinite; animation-delay: -3.4s; }
+  @keyframes brisa{
+    0%,100%{ transform: skewX(-0.35deg); }
+    50%    { transform: skewX(0.45deg); }
+  }
+  .nuvem-noite{ animation: deriva-noite 70s linear infinite; }
+  @keyframes deriva-noite{
+    from{ transform: translateX(-200px); }
+    to  { transform: translateX(700px); }
+  }
+
+  /* movimento do papel */
+  .balanca      { transform-origin: 600px 640px; animation: balancar 7s ease-in-out infinite; }
+  .balanca-tarde{ transform-origin: 600px 640px; animation: balancar 7s ease-in-out infinite; animation-delay: -1.4s; }
+  @keyframes balancar{
+    0%,100%{ transform: rotate(-1.1deg); }
+    50%    { transform: rotate(1.1deg); }
+  }
+  .nuvem-a{ animation: deriva 46s linear infinite; }
+  .nuvem-b{ animation: deriva 64s linear infinite; animation-delay: -20s; }
+  @keyframes deriva{
+    from{ transform: translateX(-260px); }
+    to  { transform: translateX(1460px); }
+  }
+  .polen{ animation: subir 11s ease-in-out infinite; }
+  .polen-b{ animation: subir 14s ease-in-out infinite; animation-delay: -5s; }
+  @keyframes subir{
+    0%   { transform: translate(0,0);        opacity: 0; }
+    18%  { opacity: .85; }
+    82%  { opacity: .7; }
+    100% { transform: translate(48px,-130px); opacity: 0; }
+  }
+
+  /* ---------- a garota ---------- */
+  .personagem{
+    position: absolute;
+    left: 50%;
+    bottom: 11%;
+    height: 74%;
+    width: auto;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 14px 0 rgba(43,60,26,.20));
+    z-index: 3;
+  }
+  @media (max-width: 720px){
+    .personagem{ height: 52%; bottom: 22%; }
+  }
+  .personagem img{ height: 100%; width: auto; display: block; }
+
+  /* ---------- o recado, dentro da cena ---------- */
+  .fala-bloco{
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    bottom: clamp(16px, 3.5svh, 36px);
+    transform: translateX(-50%);
+    width: min(760px, calc(100% - 32px));
+  }
+
+  .guirlanda{
+    position: absolute;
+    left: -14px;
+    right: -14px;
+    bottom: calc(100% - 20px);
+    width: calc(100% + 28px);
+    height: auto;
+    z-index: 1;
+    pointer-events: none;
+  }
+  @media (max-width: 560px){
+    .guirlanda{ bottom: calc(100% - 12px); }
+  }
+
+  .caixa{
+    position: relative;
+    z-index: 2;
+    background: var(--papel);
+    border: 5px solid var(--moldura);
+    border-radius: 22px;
+    padding: clamp(26px, 4.2vw, 40px) clamp(24px, 4vw, 44px) clamp(20px, 3vw, 28px);
+    box-shadow: 0 10px 0 -2px rgba(0,0,0,.28), 0 30px 50px -28px rgba(0,0,0,.7);
+    min-height: clamp(180px, 27svh, 250px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  /* um fiozinho por dentro, como papel de carta */
+  .caixa::before{
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 2px solid var(--papel-borda);
+    border-radius: 14px;
+    pointer-events: none;
+  }
+
+  .caixa p{
+    margin: 0;
+    font-family: var(--carta);
+    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" 45, "WONK" 1;
+    font-weight: 450;
+    font-size: clamp(1.06rem, 2.35vw, 1.36rem);
+    line-height: 1.66;
+    color: var(--tinta);
+    max-width: 58ch;
+    text-wrap: pretty;
+  }
+  .caixa p::first-letter{
+    float: left;
+    font-weight: 600;
+    font-size: 3.3em;
+    line-height: .82;
+    padding: 0.06em 0.1em 0 0;
+    color: #C07F12;
+  }
+  .caixa p em{ font-style: italic; font-weight: 600; color: #B77B12; }
+
+  /* o "TE AMO", com um risco de pétala por baixo */
+  .caixa p .amor{
+    font-weight: 700;
+    font-size: 1.07em;
+    letter-spacing: .035em;
+    color: #A2640A;
+    background: linear-gradient(transparent 56%, rgba(249,198,63,.6) 56%, rgba(249,198,63,.6) 93%, transparent 93%);
+    padding: 0 .14em;
+    border-radius: 3px;
+  }
+  .caixa.lunar p .amor{
+    color: #FFE9B4;
+    background: linear-gradient(transparent 56%, rgba(255,226,154,.28) 56%, rgba(255,226,154,.28) 93%, transparent 93%);
+  }
+
+  /* no celular a letra encolhe um pouco, pra caber sem tapar a garota */
+  @media (max-width: 560px){
+    .caixa{ padding: 22px 20px 16px; min-height: 0; }
+    .caixa p{ font-size: .95rem; line-height: 1.58; }
+    .caixa p::first-letter{ font-size: 3em; }
+    .arremate{ width: 62px; margin-top: 12px; }
+  }
+
+  .fala{ transition: opacity .28s ease, transform .28s ease; }
+  .fala.trocando{ opacity: 0; transform: translateY(6px); }
+
+  .arremate{
+    width: 74px;
+    height: auto;
+    margin: clamp(14px, 2.4vw, 20px) auto 0;
+    display: block;
+    opacity: .9;
+  }
+
+  .rodape-caixa{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .pips{ display: flex; gap: 8px; }
+  .pips i{
+    width: 12px; height: 12px;
+    border-radius: 999px;
+    background: var(--papel-borda);
+    border: 2px solid var(--moldura);
+    transition: background .2s ease;
+  }
+  .pips i.ativo{ background: var(--petala); }
+
+  .seta{
+    width: 0; height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 13px solid var(--moldura);
+    animation: pular 1.1s ease-in-out infinite;
+  }
+  .seta.fim{ opacity: .25; animation: none; }
+  @keyframes pular{
+    0%,100%{ transform: translateY(0); }
+    50%    { transform: translateY(5px); }
+  }
+
+
+
+  /* ---------- o recado escrito na folha ---------- */
+  .recado-papel{
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: 62%;
+    transform: translateX(-50%) rotate(-1.7deg);
+    width: min(640px, 84%);
+    text-align: center;
+    pointer-events: none;
+  }
+  .recado-papel h2{
+    font-family: var(--mao);
+    font-weight: 700;
+    font-size: clamp(2.1rem, 7vw, 3.5rem);
+    line-height: 1.02;
+    letter-spacing: .01em;
+    color: #2C3757;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .risco{
+    display: block;
+    width: min(340px, 62%);
+    height: auto;
+    margin: 6px auto 0;
+  }
+  .recado-papel p{
+    font-family: var(--mao);
+    font-weight: 500;
+    font-size: clamp(1.3rem, 3.9vw, 2rem);
+    line-height: 1.15;
+    color: #6B7593;
+    margin: 14px 0 0;
+    transform: rotate(1.1deg) translateX(6%);
+  }
+
+
+  /* ---------- a caixa dos gatinhos ---------- */
+  .caixa.gatinho{
+    background: #FFF8EF;
+    border-color: #B5664B;
+    box-shadow: 0 10px 0 -2px rgba(140,78,54,.32), 0 30px 50px -28px rgba(90,45,30,.6);
+  }
+  .caixa.gatinho::before{ border-color: #F2DBC8; }
+  .caixa.gatinho p{ color: #4A3327; }
+  .caixa.gatinho p::first-letter{ color: #D06A4E; }
+  .caixa.gatinho p em{ color: #D06A4E; }
+  .caixa.gatinho p .amor{
+    color: #B84F2E;
+    background: linear-gradient(transparent 56%, rgba(238,154,110,.45) 56%, rgba(238,154,110,.45) 93%, transparent 93%);
+  }
+  .caixa.gatinho .pips i{ background: #F2DBC8; border-color: #B5664B; }
+  .caixa.gatinho .pips i.ativo{ background: #EE9A6E; }
+  .caixa.gatinho .seta{ border-top-color: #B5664B; }
+
+  .gato-deitado{
+    position: absolute;
+    z-index: 1;
+    right: 4%;
+    bottom: calc(100% - 34px);
+    width: min(330px, 45%);
+    height: auto;
+    pointer-events: none;
+    filter: drop-shadow(0 9px 0 rgba(160,92,66,.22));
+  }
+  @media (max-width: 560px){
+    .gato-deitado{ width: 60%; right: 2%; bottom: calc(100% - 26px); }
+  }
+
+  /* ---------- a caixa da lua ---------- */
+  .caixa.lunar{
+    background: #202B52;
+    border-color: #DCE3F5;
+    box-shadow: 0 10px 0 -2px rgba(8,12,30,.55), 0 30px 60px -26px rgba(0,0,0,.85);
+  }
+  .caixa.lunar::before{ border-color: #3B4A85; }
+  .caixa.lunar p{ color: #E9EDFB; }
+  .caixa.lunar p::first-letter{ color: #FFE29A; }
+  .caixa.lunar p em{ color: #FFE29A; }
+  .caixa.lunar .pips i{ background: #3B4A85; border-color: #DCE3F5; }
+  .caixa.lunar .pips i.ativo{ background: #FFE29A; }
+  .caixa.lunar .seta{ border-top-color: #DCE3F5; }
+
+
+  /* ---------- a caixa do palco ---------- */
+  .caixa.palco{
+    background: #31191F;
+    border-color: #E0AE55;
+    box-shadow: 0 10px 0 -2px rgba(12,6,8,.6), 0 30px 60px -24px rgba(0,0,0,.9);
+  }
+  .caixa.palco::before{ border-color: #6B3140; }
+  .caixa.palco p{ color: #F7E9D6; }
+  .caixa.palco p::first-letter{ color: #F0BC5A; }
+  .caixa.palco p em{ color: #F0BC5A; }
+  .caixa.palco p .amor{
+    color: #FFDC94;
+    background: linear-gradient(transparent 56%, rgba(224,174,85,.32) 56%, rgba(224,174,85,.32) 93%, transparent 93%);
+  }
+  .caixa.palco .pips i{ background: #6B3140; border-color: #E0AE55; }
+  .caixa.palco .pips i.ativo{ background: #F0BC5A; }
+  .caixa.palco .seta{ border-top-color: #E0AE55; }
+
+  .lampada{ animation: brilhar 3.6s ease-in-out infinite; }
+  @keyframes brilhar{
+    0%,100%{ opacity: .78; }
+    50%    { opacity: 1; }
+  }
+
+
+  /* ---------- o envelope que sobe ---------- */
+  .cena.ceu-carta{ background: #DCCBE0; }
+
+  .envelope{
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: 50%;
+    width: min(340px, 58%);
+    transform: translate(-50%, calc(-50% + 26svh)) rotate(7deg) scale(.86);
+    filter: drop-shadow(0 16px 24px rgba(90,60,40,.32));
+    will-change: transform;
+  }
+  .envelope > svg{ width: 100%; height: auto; display: block; }
+
+  .rastro{
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 140%;
+    height: 220px;
+    pointer-events: none;
+  }
+  .rastro span{
+    position: absolute;
+    width: 12px; height: 12px;
+    border-radius: 999px;
+    background: #FFF3D6;
+    opacity: .8;
+    animation: cair 3.4s ease-in-out infinite;
+  }
+  .rastro span:nth-child(1){ left: 18%; animation-delay: 0s;    width: 9px;  height: 9px; }
+  .rastro span:nth-child(2){ left: 34%; animation-delay: -.9s;  background: #F7C9AE; }
+  .rastro span:nth-child(3){ left: 52%; animation-delay: -1.8s; width: 8px;  height: 8px; }
+  .rastro span:nth-child(4){ left: 68%; animation-delay: -2.5s; background: #F2C1D4; }
+  .rastro span:nth-child(5){ left: 84%; animation-delay: -1.3s; width: 7px;  height: 7px; }
+  @keyframes cair{
+    0%   { transform: translateY(0) scale(1);   opacity: 0; }
+    20%  { opacity: .85; }
+    100% { transform: translateY(180px) scale(.4); opacity: 0; }
+  }
+
+
+  /* ---------- abrir o envelope ---------- */
+  .abre-envelope{
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .15s ease;
+  }
+  .abre-envelope:hover{ transform: translateY(-4px); }
+  .abre-envelope:active{ transform: translateY(2px); }
+  .abre-envelope:focus-visible{ outline: 3px solid #8A4A2E; outline-offset: 8px; border-radius: 14px; }
+  .abre-envelope > svg{ width: 100%; height: auto; display: block; }
+
+  .aba{
+    transform-box: fill-box;
+    transform-origin: top center;
+    transition: transform .55s cubic-bezier(.3,1.1,.4,1);
+  }
+  .envelope.aberto .aba{ transform: scaleY(-1); }
+  .lacre{ transition: opacity .3s ease; }
+  .envelope.aberto .lacre{ opacity: 0; }
+
+  .coracoes{
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    pointer-events: none;
+    overflow: visible;
+  }
+  .coracoes span{
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    animation: voarCoracao var(--dur, 2.2s) cubic-bezier(.25,.7,.4,1) forwards;
+  }
+  .coracoes i{
+    display: block;
+    width: var(--tam, 20px);
+    height: var(--tam, 20px);
+    background: var(--cor, #F27D8E);
+    transform: rotate(-45deg);
+    position: relative;
+  }
+  .coracoes i::before,
+  .coracoes i::after{
+    content: "";
+    position: absolute;
+    width: var(--tam, 20px);
+    height: var(--tam, 20px);
+    background: inherit;
+    border-radius: 50%;
+  }
+  .coracoes i::before{ top: calc(var(--tam, 20px) / -2); left: 0; }
+  .coracoes i::after{ top: 0; left: calc(var(--tam, 20px) / 2); }
+  @keyframes voarCoracao{
+    0%   { transform: translate(-50%, 0) scale(.3); opacity: 0; }
+    18%  { opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--dx, 0px)), var(--dy, -230px)) scale(1.05); opacity: 0; }
+  }
+
+  .dica-envelope{
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    bottom: 9%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-family: var(--mao);
+    font-weight: 600;
+    font-size: clamp(1.15rem, 3.4vw, 1.55rem);
+    color: #8A6A55;
+    animation: piscarDica 2.6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .dica-envelope[hidden]{ display: none; }
+  @keyframes piscarDica{
+    0%,100%{ opacity: .55; transform: translateX(-50%) translateY(0); }
+    50%    { opacity: 1;   transform: translateX(-50%) translateY(-5px); }
+  }
+
+
+  /* ---------- o coração que sai do envelope ---------- */
+  .abre-envelope{ position: relative; z-index: 2; }
+  .coracao-grande{
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    top: 30%;
+    width: 46%;
+    transform: translate(-50%, 10%) scale(.2);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .coracao-grande svg{ width: 100%; height: auto; display: block; overflow: visible; }
+  .envelope.aberto .coracao-grande{
+    animation: sairCoracao 1s cubic-bezier(.2,1.3,.4,1) .2s forwards;
+  }
+  @keyframes sairCoracao{
+    from{ transform: translate(-50%, 10%) scale(.2); opacity: 0; }
+    60% { opacity: 1; }
+    to  { transform: translate(-50%, -116%) scale(1); opacity: 1; }
+  }
+  .bate{ animation: bater 1.8s ease-in-out .9s infinite; transform-origin: center; }
+  @keyframes bater{
+    0%,100%{ transform: scale(1); }
+    12%    { transform: scale(1.09); }
+    24%    { transform: scale(1); }
+    36%    { transform: scale(1.05); }
+    48%    { transform: scale(1); }
+  }
+
+
+  /* ---------- botãozinho de teste ---------- */
+  .recomecar{
+    position: absolute;
+    z-index: 8;
+    left: 14px;
+    bottom: 14px;
+    width: 38px; height: 38px;
+    display: grid; place-items: center;
+    padding: 0;
+    background: rgba(255,246,227,.5);
+    border: 2px solid rgba(90,60,40,.3);
+    border-radius: 12px;
+    color: rgba(70,45,30,.6);
+    cursor: default;
+    opacity: 0;
+    transition: opacity .2s ease, transform .12s ease;
+  }
+  .recomecar.aparece{ opacity: .9; }
+  .recomecar:focus-visible{ outline: 3px solid #8A4A2E; outline-offset: 3px; opacity: .9; }
+  .recomecar svg{ width: 19px; height: 19px; display: block; }
+
+  /* ---------- a pergunta ---------- */
+  .pergunta{
+    position: absolute;
+    z-index: 6;
+    left: 50%;
+    bottom: clamp(20px, 6svh, 54px);
+    transform: translateX(-50%);
+    width: min(440px, calc(100% - 32px));
+    animation: subirPergunta .5s cubic-bezier(.2,1.2,.4,1) both;
+  }
+  .pergunta[hidden]{ display: none; }
+  @keyframes subirPergunta{
+    from{ transform: translateX(-50%) translateY(18px) scale(.96); opacity: 0; }
+    to  { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
+  }
+  .cartao-pergunta{
+    background: var(--papel);
+    border: 5px solid var(--moldura);
+    border-radius: 22px;
+    box-shadow: 0 10px 0 -2px rgba(90,60,40,.35), 0 30px 50px -28px rgba(60,35,20,.7);
+    padding: clamp(20px, 4vw, 30px) clamp(18px, 4vw, 32px) clamp(18px, 3vw, 26px);
+    text-align: center;
+  }
+  .cartao-pergunta h2{
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(1.5rem, 5.5vw, 2.1rem);
+    line-height: 1.1;
+    margin: 0;
+    color: var(--tinta);
+  }
+  .botoes{
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  .botoes[hidden]{ display: none; }
+  .resposta{
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--moldura);
+    border: 4px solid var(--moldura);
+    border-radius: 999px;
+    padding: 11px 30px 13px;
+    cursor: pointer;
+    box-shadow: 0 5px 0 -1px rgba(0,0,0,.28);
+    transition: transform .12s ease, box-shadow .12s ease, background .15s ease;
+  }
+  .resposta.sim{ background: var(--petala); }
+  .resposta.nao{ background: var(--papel-borda); }
+  .resposta:hover{ transform: translateY(-2px); box-shadow: 0 7px 0 -1px rgba(0,0,0,.28); }
+  .resposta:active{ transform: translateY(3px); box-shadow: 0 2px 0 -1px rgba(0,0,0,.28); }
+  .resposta:focus-visible{ outline: 3px solid #D8412F; outline-offset: 4px; }
+  .aviso-escolha{
+    font-family: var(--carta);
+    font-optical-sizing: auto;
+    font-size: clamp(.78rem, 2.4vw, .88rem);
+    line-height: 1.4;
+    color: #8C7457;
+    margin: 14px 0 0;
+    text-wrap: balance;
+  }
+  .aviso-escolha[hidden]{ display: none; }
+
+  .resposta-texto{
+    font-family: var(--carta);
+    font-size: clamp(1.02rem, 3vw, 1.2rem);
+    line-height: 1.55;
+    color: var(--tinta);
+    margin: 16px 0 0;
+  }
+  .resposta-texto[hidden]{ display: none; }
+
+  @media (prefers-reduced-motion: reduce){
+    .dica-envelope, .pergunta, .bate{ animation: none; }
+    .envelope.aberto .coracao-grande{ animation: none; opacity: 1; transform: translate(-50%, -116%) scale(1); }
+  }
+
+
+  /* ---------- a festa do sim ---------- */
+  .festa{
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .festa .peca{
+    position: absolute;
+    bottom: -80px;
+    animation: subirFesta var(--dur, 4s) linear forwards;
+  }
+  .festa .confete{
+    display: block;
+    width: var(--tam, 12px);
+    height: calc(var(--tam, 12px) * var(--prop, 1.6));
+    background: var(--cor, #F9C63F);
+    border-radius: var(--raio, 2px);
+  }
+  .festa .gato{
+    display: block;
+    width: var(--tam, 110px);
+    height: auto;
+    filter: drop-shadow(0 6px 10px rgba(90,60,40,.25));
+  }
+  @keyframes subirFesta{
+    0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+    7%   { opacity: 1; }
+    88%  { opacity: 1; }
+    100% { transform: translate(var(--dx, 0px), calc(-100svh - 200px)) rotate(var(--giro, 360deg)); opacity: 0; }
+  }
+
+  /* ---------- o balão do sim ---------- */
+  .cartao-pergunta.balao{
+    position: relative;
+    background: #FFF6E3;
+    border-color: var(--moldura);
+  }
+  .cartao-pergunta.balao::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -26px;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 26px solid var(--moldura);
+  }
+  .cartao-pergunta.despedida h2{
+    font-family: var(--carta);
+    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" 45, "WONK" 1;
+    font-weight: 500;
+    font-size: clamp(1.18rem, 4.2vw, 1.55rem);
+    line-height: 1.42;
+    color: var(--tinta);
+    text-wrap: balance;
+  }
+
+  .cartao-pergunta.balao h2{
+    font-size: clamp(1.7rem, 6.5vw, 2.5rem);
+    color: #B8434F;
+    animation: pulsinho 1.9s ease-in-out infinite;
+  }
+  @keyframes pulsinho{
+    0%,100%{ transform: scale(1) rotate(-1deg); }
+    50%    { transform: scale(1.05) rotate(1deg); }
+  }
+
+  /* ---------- o não, fujão ---------- */
+  .resposta.nao.fugindo{
+    position: absolute;
+    z-index: 7;
+    margin: 0;
+    transition: left .9s cubic-bezier(.32,.9,.3,1), top .9s cubic-bezier(.32,.9,.3,1);
+  }
+
+  .recado-nao{
+    position: absolute;
+    z-index: 7;
+    left: 50%;
+    top: 54%;
+    margin: 0;
+    font-family: var(--mao);
+    font-weight: 700;
+    font-size: clamp(1.7rem, 5.4vw, 2.6rem);
+    color: #C24A5C;
+    text-shadow: 0 2px 0 rgba(255,252,244,.6);
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translateX(-50%) rotate(-3deg);
+    animation: pipocaRecado .45s cubic-bezier(.2,1.5,.4,1) both;
+  }
+  .recado-nao[hidden]{ display: none; }
+  @keyframes pipocaRecado{
+    from{ transform: translateX(-50%) scale(.4) rotate(-9deg); opacity: 0; }
+    to  { transform: translateX(-50%) scale(1) rotate(-3deg); opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cartao-pergunta.balao h2{ animation: none; }
+    .resposta.nao.fugindo{ transition: none; }
+    .recado-nao{ animation: none; }
+  }
+
+  /* ---------- abertura ---------- */
+  .abertura{
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    padding: 24px 16px;
+    background: rgba(24,38,22,.55);
+    backdrop-filter: blur(3px);
+    transition: opacity .4s ease;
+  }
+  .abertura[hidden]{ display: none; }
+  .abertura.saindo{ opacity: 0; pointer-events: none; }
+
+  .cartao{
+    background: var(--papel);
+    border: 5px solid var(--moldura);
+    border-radius: 22px;
+    box-shadow: 0 12px 0 -2px rgba(0,0,0,.3), 0 40px 60px -30px rgba(0,0,0,.8);
+    padding: clamp(28px, 5vw, 44px) clamp(24px, 5vw, 48px) clamp(24px, 4vw, 34px);
+    text-align: center;
+    max-width: 440px;
+    width: 100%;
+    transform: rotate(-1deg);
+    animation: chegar .5s cubic-bezier(.2,1.2,.4,1) both;
+  }
+  @keyframes chegar{
+    from{ transform: rotate(-1deg) translateY(18px) scale(.96); opacity: 0; }
+    to  { transform: rotate(-1deg) translateY(0) scale(1); opacity: 1; }
+  }
+  .cartao .flor{ width: 54px; height: 54px; display: block; margin: 0 auto 14px; }
+  .cartao h2{
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(1.45rem, 5.5vw, 2rem);
+    line-height: 1.1;
+    margin: 0;
+    color: var(--tinta);
+    text-wrap: balance;
+  }
+  .cartao p{
+    margin: 10px 0 0;
+    font-size: .95rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #7A6450;
+  }
+  .comecar{
+    margin-top: 22px;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 1.05rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--moldura);
+    background: var(--petala);
+    border: 4px solid var(--moldura);
+    border-radius: 999px;
+    padding: 12px 38px 14px;
+    cursor: pointer;
+    box-shadow: 0 6px 0 -1px rgba(0,0,0,.3);
+    transition: transform .12s ease, box-shadow .12s ease, background .15s ease;
+  }
+  .comecar:hover{ background: #FFD86A; transform: translateY(-2px); box-shadow: 0 8px 0 -1px rgba(0,0,0,.3); }
+  .comecar:active{ transform: translateY(4px); box-shadow: 0 2px 0 -1px rgba(0,0,0,.3); }
+  .comecar:focus-visible{ outline: 3px solid #D8412F; outline-offset: 4px; }
+
+  @media (prefers-reduced-motion: reduce){
+    .cartao{ animation: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .balanca, .balanca-tarde, .nuvem-a, .nuvem-b, .polen, .polen-b, .seta,
+    .brisa, .brisa-b, .nuvem-noite, .lampada, .rastro span{ animation: none; }
+    .fala{ transition: none; }
+  }
+</style>
+
+
+<div class="festa" id="festa" aria-hidden="true"></div>
+
+<div class="abertura" id="abertura" hidden>
+  <div class="cartao" role="dialog" aria-modal="true" aria-labelledby="saudacao">
+    <svg class="flor" viewBox="0 0 120 120" aria-hidden="true">
+      <g fill="#F9C63F" stroke="#3C2C1E" stroke-width="5" stroke-linejoin="round">
+        <path d="M60,58 C74,48 78,26 60,8 C42,26 46,48 60,58 Z"/>
+        <path d="M60,58 C74,48 78,26 60,8 C42,26 46,48 60,58 Z" transform="rotate(45 60 60)"/>
+        <path d="M60,58 C74,48 78,26 60,8 C42,26 46,48 60,58 Z" transform="rotate(90 60 60)"/>
+        <path d="M60,58 C74,48 78,26 60,8 C42,26 46,48 60,58 Z" transform="rotate(135 60 60)"/>
+        <path d="M60,58 C74,48 78,26 60,8 C42,26 46,48 60,58 Z" transform="rotate(180 60 60)"/>
+        <path d="M60,58 C74,48 78,26 60,8 C42,26 46,48 60,58 Z" transform="rotate(225 60 60)"/>
+        <path d="M60,58 C74,48 78,26 60,8 C42,26 46,48 60,58 Z" transform="rotate(270 60 60)"/>
+        <path d="M60,58 C74,48 78,26 60,8 C42,26 46,48 60,58 Z" transform="rotate(315 60 60)"/>
+      </g>
+      <circle cx="60" cy="60" r="20" fill="#7A4A22" stroke="#3C2C1E" stroke-width="5"/>
+    </svg>
+    <h2 id="saudacao">Oi Moni, espero que goste.</h2>
+    <p>vai descendo a página pra trocar os balões :)</p>
+    <button class="comecar" id="comecar" type="button">Começar</button>
+  </div>
+</div>
+
+<section class="ato" id="ato1">
+
+  <div class="cena">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Um campo verde com um girassol gigante no meio, sob um céu azul de papel recortado.">
+      <defs>
+        <linearGradient id="ceu" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="var(--ceu-alto)"/>
+          <stop offset="72%" stop-color="#AEE4EE"/>
+          <stop offset="100%" stop-color="var(--ceu-baixo)"/>
+        </linearGradient>
+        <linearGradient id="petalaGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#FFD86A"/>
+          <stop offset="100%" stop-color="var(--petala)"/>
+        </linearGradient>
+        <radialGradient id="mioloGrad" cx="42%" cy="36%" r="72%">
+          <stop offset="0%"   stop-color="var(--miolo-claro)"/>
+          <stop offset="100%" stop-color="var(--miolo)"/>
+        </radialGradient>
+
+        <filter id="recorte" x="-14%" y="-14%" width="132%" height="132%">
+          <feDropShadow dx="0" dy="7" stdDeviation="0" flood-color="#2B3C1A" flood-opacity=".26"/>
+        </filter>
+        <filter id="recorteLeve" x="-14%" y="-14%" width="132%" height="132%">
+          <feDropShadow dx="0" dy="4" stdDeviation="0" flood-color="#2B3C1A" flood-opacity=".18"/>
+        </filter>
+        <filter id="grao">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/>
+          <feColorMatrix type="saturate" values="0"/>
+        </filter>
+
+        <path id="petala" d="M600,214 C641,182 654,112 600,48 C546,112 559,182 600,214 Z"/>
+        <g id="tufo">
+          <path d="M0,0 C-6,-26 -20,-44 -34,-56 -14,-52 -3,-34 0,-14 3,-36 14,-56 32,-62 16,-46 5,-26 0,0 Z"/>
+        </g>
+      </defs>
+
+      <rect width="1200" height="700" fill="url(#ceu)"/>
+
+      <g opacity=".5">
+        <circle cx="148" cy="122" r="52" fill="#FFF2C4"/>
+        <circle cx="148" cy="122" r="34" fill="#FFE38F"/>
+      </g>
+
+      <g opacity=".92">
+        <g class="nuvem-a">
+          <g filter="url(#recorteLeve)">
+            <path d="M180,150 q14,-42 58,-40 q16,-34 58,-26 q40,-14 58,26 q44,-2 42,40 z" fill="#FFFFFF" stroke="#E3F4F7" stroke-width="3"/>
+          </g>
+        </g>
+        <g class="nuvem-b">
+          <g filter="url(#recorteLeve)">
+            <path d="M560,96 q11,-33 46,-31 q13,-27 46,-21 q32,-11 46,21 q35,-2 33,31 z" fill="#FFFFFF" stroke="#E3F4F7" stroke-width="3"/>
+          </g>
+        </g>
+      </g>
+
+      <g filter="url(#recorte)">
+        <path d="M-40,470 q150,-92 320,-40 q120,36 250,-22 q150,-66 300,-8 q140,54 410,6 L1240,700 L-40,700 Z"
+              fill="var(--colina-far)" stroke="#EFFBE4" stroke-width="3"/>
+      </g>
+      <g filter="url(#recorte)">
+        <path d="M-40,528 q180,-70 360,-24 q150,38 300,-14 q180,-62 360,4 q120,44 260,10 L1240,700 L-40,700 Z"
+              fill="var(--colina-mid)" stroke="#F0FBE6" stroke-width="3"/>
+      </g>
+
+      <!-- o girassol -->
+      <g class="balanca">
+        <g filter="url(#recorte)">
+          <path d="M586,250 q-10,190 4,300 q4,44 22,110 l-40,0 q-18,-70 -22,-114 q-14,-106 -4,-296 Z"
+                fill="var(--caule)" stroke="#EFFBE4" stroke-width="3"/>
+        </g>
+        <g filter="url(#recorteLeve)">
+          <path d="M576,432 C508,398 432,412 396,458 C452,486 528,486 578,462 Z"
+                fill="var(--caule-esc)" stroke="#EFFBE4" stroke-width="3"/>
+          <path d="M404,452 C462,452 522,458 574,448" fill="none" stroke="#EFFBE4" stroke-width="3" opacity=".65"/>
+          <path d="M596,516 C662,478 744,490 782,538 C724,570 646,566 596,544 Z"
+                fill="var(--caule-esc)" stroke="#EFFBE4" stroke-width="3"/>
+          <path d="M772,532 C716,530 656,538 600,530" fill="none" stroke="#EFFBE4" stroke-width="3" opacity=".65"/>
+        </g>
+
+        <g filter="url(#recorte)" fill="var(--petala-esc)" stroke="#FFF3D0" stroke-width="3">
+          <use href="#petala" transform="rotate(11.25 600 260)"/>
+          <use href="#petala" transform="rotate(33.75 600 260)"/>
+          <use href="#petala" transform="rotate(56.25 600 260)"/>
+          <use href="#petala" transform="rotate(78.75 600 260)"/>
+          <use href="#petala" transform="rotate(101.25 600 260)"/>
+          <use href="#petala" transform="rotate(123.75 600 260)"/>
+          <use href="#petala" transform="rotate(146.25 600 260)"/>
+          <use href="#petala" transform="rotate(168.75 600 260)"/>
+          <use href="#petala" transform="rotate(191.25 600 260)"/>
+          <use href="#petala" transform="rotate(213.75 600 260)"/>
+          <use href="#petala" transform="rotate(236.25 600 260)"/>
+          <use href="#petala" transform="rotate(258.75 600 260)"/>
+          <use href="#petala" transform="rotate(281.25 600 260)"/>
+          <use href="#petala" transform="rotate(303.75 600 260)"/>
+          <use href="#petala" transform="rotate(326.25 600 260)"/>
+          <use href="#petala" transform="rotate(348.75 600 260)"/>
+        </g>
+        <g filter="url(#recorteLeve)" fill="url(#petalaGrad)" stroke="#FFF3D0" stroke-width="3">
+          <use href="#petala" transform="rotate(0 600 260)"/>
+          <use href="#petala" transform="rotate(22.5 600 260)"/>
+          <use href="#petala" transform="rotate(45 600 260)"/>
+          <use href="#petala" transform="rotate(67.5 600 260)"/>
+          <use href="#petala" transform="rotate(90 600 260)"/>
+          <use href="#petala" transform="rotate(112.5 600 260)"/>
+          <use href="#petala" transform="rotate(135 600 260)"/>
+          <use href="#petala" transform="rotate(157.5 600 260)"/>
+          <use href="#petala" transform="rotate(180 600 260)"/>
+          <use href="#petala" transform="rotate(202.5 600 260)"/>
+          <use href="#petala" transform="rotate(225 600 260)"/>
+          <use href="#petala" transform="rotate(247.5 600 260)"/>
+          <use href="#petala" transform="rotate(270 600 260)"/>
+          <use href="#petala" transform="rotate(292.5 600 260)"/>
+          <use href="#petala" transform="rotate(315 600 260)"/>
+          <use href="#petala" transform="rotate(337.5 600 260)"/>
+        </g>
+
+        <g filter="url(#recorte)">
+          <circle cx="600" cy="260" r="96" fill="url(#mioloGrad)" stroke="#FFF3D0" stroke-width="4"/>
+          <g fill="#5E3616" opacity=".45">
+            <circle cx="566" cy="228" r="7"/><circle cx="600" cy="216" r="7"/><circle cx="636" cy="230" r="7"/>
+            <circle cx="552" cy="262" r="7"/><circle cx="588" cy="252" r="7"/><circle cx="624" cy="258" r="7"/><circle cx="654" cy="268" r="7"/>
+            <circle cx="566" cy="296" r="7"/><circle cx="602" cy="290" r="7"/><circle cx="638" cy="298" r="7"/>
+            <circle cx="586" cy="324" r="7"/><circle cx="622" cy="326" r="7"/>
+          </g>
+          <ellipse cx="566" cy="224" rx="40" ry="24" fill="#FFFFFF" opacity=".13"/>
+        </g>
+      </g>
+
+      <g filter="url(#recorte)">
+        <path d="M-40,600 q170,-56 350,-22 q160,30 320,-10 q190,-46 370,8 q120,36 240,6 L1240,700 L-40,700 Z"
+              fill="var(--campo)" stroke="#F0FBE6" stroke-width="3"/>
+      </g>
+
+      <!-- girassóis menores -->
+      <g class="balanca-tarde">
+        <g filter="url(#recorteLeve)">
+          <path d="M212,616 l4,-76" stroke="var(--caule-esc)" stroke-width="9" stroke-linecap="round" fill="none"/>
+          <g transform="translate(216 532) scale(.30)" fill="var(--petala)" stroke="#FFF3D0" stroke-width="7">
+            <use href="#petala" transform="rotate(0) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(45) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(90) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(135) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(180) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(225) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(270) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(315) translate(-600 -260)"/>
+          </g>
+          <circle cx="216" cy="532" r="15" fill="var(--miolo)" stroke="#FFF3D0" stroke-width="2.5"/>
+
+          <path d="M964,624 l-5,-68" stroke="var(--caule-esc)" stroke-width="9" stroke-linecap="round" fill="none"/>
+          <g transform="translate(958 548) scale(.25)" fill="var(--petala)" stroke="#FFF3D0" stroke-width="8">
+            <use href="#petala" transform="rotate(0) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(45) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(90) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(135) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(180) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(225) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(270) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(315) translate(-600 -260)"/>
+          </g>
+          <circle cx="958" cy="548" r="12" fill="var(--miolo)" stroke="#FFF3D0" stroke-width="2.5"/>
+
+          <path d="M1090,634 l4,-56" stroke="var(--caule-esc)" stroke-width="8" stroke-linecap="round" fill="none"/>
+          <g transform="translate(1094 572) scale(.2)" fill="var(--petala-esc)" stroke="#FFF3D0" stroke-width="10">
+            <use href="#petala" transform="rotate(0) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(45) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(90) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(135) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(180) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(225) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(270) translate(-600 -260)"/>
+            <use href="#petala" transform="rotate(315) translate(-600 -260)"/>
+          </g>
+          <circle cx="1094" cy="572" r="10" fill="var(--miolo)" stroke="#FFF3D0" stroke-width="2.5"/>
+        </g>
+      </g>
+
+      <g fill="var(--campo-frente)" filter="url(#recorteLeve)">
+        <use href="#tufo" transform="translate(70 672) scale(1.25)"/>
+        <use href="#tufo" transform="translate(300 690) scale(1.5)"/>
+        <use href="#tufo" transform="translate(470 668) scale(1.1)"/>
+        <use href="#tufo" transform="translate(760 692) scale(1.4)"/>
+        <use href="#tufo" transform="translate(1010 676) scale(1.2)"/>
+        <use href="#tufo" transform="translate(1160 694) scale(1.5)"/>
+      </g>
+      <g fill="var(--campo-esc)" opacity=".8">
+        <use href="#tufo" transform="translate(180 648) scale(.85)"/>
+        <use href="#tufo" transform="translate(620 646) scale(.8)"/>
+        <use href="#tufo" transform="translate(880 652) scale(.9)"/>
+      </g>
+
+      <g fill="#FFF0B8">
+        <circle class="polen"   cx="420" cy="520" r="5"/>
+        <circle class="polen-b" cx="720" cy="470" r="4"/>
+        <circle class="polen"   cx="880" cy="560" r="4.5" style="animation-delay:-7s"/>
+        <circle class="polen-b" cx="330" cy="430" r="3.5" style="animation-delay:-2s"/>
+      </g>
+
+      <rect width="1200" height="700" filter="url(#grao)" opacity=".07" style="mix-blend-mode:multiply"/>
+    </svg>
+
+    <!-- a garota -->
+    <div class="personagem" id="personagem">
+      <img src="garota.png" alt="A garota, de jaqueta preta larga, calça verde clara e óculos, com a bolsinha onde o gato vai." width="317" height="880">
+    </div>
+
+
+    <div class="fala-bloco">
+      <svg class="guirlanda" viewBox="0 0 760 86" aria-hidden="true">
+        <defs>
+          <g id="florzinha">
+            <g fill="#E5A526" stroke="#FFF6E3" stroke-width="2.6" stroke-linejoin="round">
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(22.5)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(67.5)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(112.5)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(157.5)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(202.5)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(247.5)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(292.5)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(337.5)"/>
+            </g>
+            <g fill="#F9C63F" stroke="#FFF6E3" stroke-width="2.6" stroke-linejoin="round">
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(45)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(90)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(135)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(180)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(225)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(270)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(315)"/>
+            </g>
+            <circle r="12" fill="#7A4A22" stroke="#FFF6E3" stroke-width="2.6"/>
+            <circle r="5" fill="#8F5B2C"/>
+          </g>
+          <g id="folhinha">
+            <path d="M0,0 C18,-14 44,-12 56,2 C40,16 14,14 0,0 Z" fill="#4E9636" stroke="#FFF6E3" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M8,3 C22,1 38,2 50,4" fill="none" stroke="#FFF6E3" stroke-width="2.2" opacity=".7"/>
+          </g>
+        </defs>
+
+        <g filter="none">
+          <use href="#folhinha" transform="translate(126 62) rotate(-158) scale(1.2)"/>
+          <use href="#folhinha" transform="translate(632 58) rotate(-14) scale(1.1)"/>
+          <use href="#florzinha" transform="translate(72 56) rotate(-12) scale(1.35)"/>
+          <use href="#florzinha" transform="translate(166 70) rotate(16) scale(.92)"/>
+          <use href="#florzinha" transform="translate(380 76) rotate(6) scale(.66)"/>
+          <use href="#florzinha" transform="translate(692 58) rotate(14) scale(1.28)"/>
+          <use href="#florzinha" transform="translate(600 72) rotate(-22) scale(.84)"/>
+        </g>
+      </svg>
+
+      <div class="caixa" aria-live="polite">
+        <p class="fala" id="fala">Espero que você esteja bem, quis começar com esse girassol, porque foi uma das primeiras coisas que fiz pra você, com a música do Tom Jobim, que você passou a gostar depois. Lembro de você toda vez que escuto em qualquer lugar.</p>
+        <svg class="arremate" viewBox="0 0 120 26" aria-hidden="true">
+          <path d="M6,13 C26,13 34,13 44,13" fill="none" stroke="#E2D2AE" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M76,13 C86,13 94,13 114,13" fill="none" stroke="#E2D2AE" stroke-width="2.6" stroke-linecap="round"/>
+          <g transform="translate(60 13) scale(.33)">
+            <g fill="#F9C63F" stroke="#B98A2A" stroke-width="5" stroke-linejoin="round">
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(60)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(120)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(180)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(240)"/>
+              <path d="M0,-9 C9,-16 11,-28 0,-37 C-11,-28 -9,-16 0,-9 Z" transform="rotate(300)"/>
+            </g>
+            <circle r="12" fill="#7A4A22" stroke="#B98A2A" stroke-width="5"/>
+          </g>
+        </svg>
+        <div class="rodape-caixa" id="rodapeCaixa" hidden>
+          <div class="pips" id="pips" aria-hidden="true"></div>
+          <div class="seta" id="seta" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="ato" id="ato2">
+  <div class="cena noite">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Um quarto à noite, com uma cama e uma janela aberta atrás de cortinas compridas, mostrando a lua.">
+      <defs>
+        <linearGradient id="parede" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#443C68"/>
+          <stop offset="100%" stop-color="#332C50"/>
+        </linearGradient>
+        <linearGradient id="noite" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#151E42"/>
+          <stop offset="100%" stop-color="#33427A"/>
+        </linearGradient>
+        <linearGradient id="cortinaG" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#6E5A96"/>
+          <stop offset="55%"  stop-color="#57477C"/>
+          <stop offset="100%" stop-color="#48396A"/>
+        </linearGradient>
+        <linearGradient id="cortinaG2" x1="1" y1="0" x2="0" y2="0">
+          <stop offset="0%"   stop-color="#6E5A96"/>
+          <stop offset="55%"  stop-color="#57477C"/>
+          <stop offset="100%" stop-color="#48396A"/>
+        </linearGradient>
+        <radialGradient id="brilhoLua" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#FFF6D9" stop-opacity=".38"/>
+          <stop offset="100%" stop-color="#FFF6D9" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="edredom" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#CBD9EC"/>
+          <stop offset="100%" stop-color="#A9BBD4"/>
+        </linearGradient>
+
+        <filter id="recorteQ" x="-16%" y="-16%" width="136%" height="136%">
+          <feDropShadow dx="0" dy="7" stdDeviation="0" flood-color="#140F26" flood-opacity=".5"/>
+        </filter>
+        <filter id="recorteQLeve" x="-16%" y="-16%" width="136%" height="136%">
+          <feDropShadow dx="0" dy="4" stdDeviation="0" flood-color="#140F26" flood-opacity=".36"/>
+        </filter>
+        <filter id="grao2">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/>
+          <feColorMatrix type="saturate" values="0"/>
+        </filter>
+
+        <filter id="luarNoMenino" x="-16%" y="-16%" width="132%" height="132%">
+          <feComponentTransfer>
+            <feFuncR type="linear" slope="0.80"/>
+            <feFuncG type="linear" slope="0.84"/>
+            <feFuncB type="linear" slope="0.98"/>
+          </feComponentTransfer>
+          <feDropShadow dx="0" dy="8" stdDeviation="0" flood-color="#140F26" flood-opacity=".45"/>
+        </filter>
+
+        <clipPath id="cortaJanela">
+          <rect x="452" y="82" width="316" height="318" rx="6"/>
+        </clipPath>
+      </defs>
+
+      <!-- parede e chão -->
+      <rect width="1200" height="700" fill="url(#parede)"/>
+      <g filter="url(#recorteQ)">
+        <path d="M-20,442 L1220,442 L1220,720 L-20,720 Z" fill="#463654" stroke="#5A4668" stroke-width="3"/>
+      </g>
+      <g stroke="#3D2E4A" stroke-width="3" opacity=".7">
+        <path d="M-20,506 L1220,506"/><path d="M-20,578 L1220,578"/><path d="M-20,656 L1220,656"/>
+      </g>
+
+      <!-- o céu pela janela -->
+      <rect x="452" y="82" width="316" height="318" rx="6" fill="url(#noite)"/>
+      <g clip-path="url(#cortaJanela)">
+        <g fill="#FFF6D9">
+          <circle cx="500" cy="128" r="2.6"/><circle cx="546" cy="186" r="1.9"/>
+          <circle cx="486" cy="236" r="2.2"/><circle cx="530" cy="300" r="1.7"/>
+          <circle cx="592" cy="112" r="2.1"/><circle cx="600" cy="256" r="2.5"/>
+          <circle cx="646" cy="330" r="1.8"/><circle cx="716" cy="300" r="2.3"/>
+          <circle cx="744" cy="140" r="1.9"/><circle cx="478" cy="352" r="1.7"/>
+          <path d="M566,150 l4,12 12,4 -12,4 -4,12 -4,-12 -12,-4 12,-4 Z" opacity=".9"/>
+          <path d="M700,232 l3,9 9,3 -9,3 -3,9 -3,-9 -9,-3 9,-3 Z" opacity=".8"/>
+        </g>
+        <!-- a lua -->
+        <circle cx="702" cy="192" r="98" fill="url(#brilhoLua)"/>
+        <circle cx="702" cy="192" r="52" fill="#FFF6D9" stroke="#FFFDF2" stroke-width="3"/>
+        <g fill="#E7D9AE" opacity=".75">
+          <circle cx="684" cy="176" r="11"/><circle cx="716" cy="206" r="8"/>
+          <circle cx="680" cy="212" r="6"/><circle cx="720" cy="168" r="5"/>
+        </g>
+        <!-- nuvem fina passando -->
+        <g opacity=".2" class="nuvem-noite">
+          <path d="M560,250 q18,-26 54,-18 q26,-22 60,-4 q40,-6 46,22 z" fill="#DCE6FF"/>
+        </g>
+      </g>
+
+      <!-- caixilho da janela -->
+      <g filter="url(#recorteQLeve)" fill="none" stroke="#EDE3CF" stroke-width="14" stroke-linejoin="round">
+        <rect x="452" y="82" width="316" height="318" rx="6"/>
+      </g>
+      <!-- a folha da janela, aberta pra dentro -->
+      <g filter="url(#recorteQ)">
+        <path d="M456,88 L566,128 L566,354 L456,394 Z"
+              fill="#B9C6E4" fill-opacity=".22" stroke="#EDE3CF" stroke-width="10" stroke-linejoin="round"/>
+        <path d="M456,240 L566,240" stroke="#EDE3CF" stroke-width="7" stroke-linecap="round"/>
+        <path d="M560,232 C572,232 578,238 578,244 C578,250 572,256 560,256"
+              fill="none" stroke="#C9BCA2" stroke-width="8" stroke-linecap="round"/>
+      </g>
+
+      <!-- peitoril -->
+      <g filter="url(#recorteQ)">
+        <path d="M424,398 L796,398 L804,428 L416,428 Z" fill="#EDE3CF" stroke="#FFFBF0" stroke-width="3" stroke-linejoin="round"/>
+      </g>
+
+      <!-- luar entrando -->
+      <path d="M456,410 L764,410 L616,700 L44,700 Z" fill="#DCE6FF" opacity=".11"/>
+
+      <!-- varão -->
+      <g filter="url(#recorteQLeve)">
+        <rect x="150" y="34" width="920" height="14" rx="7" fill="#9A8560" stroke="#C0A97E" stroke-width="3"/>
+        <circle cx="150" cy="41" r="13" fill="#C0A97E" stroke="#E0CFAA" stroke-width="3"/>
+        <circle cx="1070" cy="41" r="13" fill="#C0A97E" stroke="#E0CFAA" stroke-width="3"/>
+      </g>
+
+      <!-- cortinas compridas -->
+      <g class="brisa" filter="url(#recorteQ)">
+        <path d="M190,44 L432,44 L432,580 C404,596 376,578 348,592 C320,606 290,582 262,596 C236,608 212,588 190,598 Z"
+              fill="url(#cortinaG)" stroke="#8271AC" stroke-width="3" stroke-linejoin="round"/>
+        <g stroke="#7A67A4" stroke-width="7" opacity=".55" fill="none" stroke-linecap="round">
+          <path d="M234,58 C230,240 236,420 232,580"/>
+          <path d="M286,58 C282,240 288,420 284,586"/>
+          <path d="M338,58 C334,240 340,420 336,584"/>
+          <path d="M390,58 C386,240 392,420 388,582"/>
+        </g>
+      </g>
+      <g class="brisa-b" filter="url(#recorteQ)">
+        <path d="M788,44 L1030,44 L1030,598 C1008,588 984,608 958,596 C930,582 900,606 872,592 C844,578 816,596 788,580 Z"
+              fill="url(#cortinaG2)" stroke="#8271AC" stroke-width="3" stroke-linejoin="round"/>
+        <g stroke="#7A67A4" stroke-width="7" opacity=".55" fill="none" stroke-linecap="round">
+          <path d="M830,58 C834,240 828,420 832,582"/>
+          <path d="M882,58 C886,240 880,420 884,584"/>
+          <path d="M934,58 C938,240 932,420 936,586"/>
+          <path d="M986,58 C990,240 984,420 988,580"/>
+        </g>
+      </g>
+
+      <!-- a cama -->
+      <g transform="translate(110 -80)">
+      <g filter="url(#recorteQ)">
+        <!-- cabeceira -->
+        <path d="M104,470 L104,314 C104,294 120,280 142,280 L186,280 C208,280 224,294 224,314 L224,470 Z"
+              fill="#6E4C3C" stroke="#8A6250" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M122,462 L122,318 C122,308 130,300 142,300 L186,300 C198,300 206,308 206,318 L206,462 Z"
+              fill="#5C3E30" stroke="none"/>
+        <!-- base -->
+        <path d="M118,448 L714,448 L714,494 L118,494 Z" fill="#6E4C3C" stroke="#8A6250" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M140,494 L178,494 L178,534 L140,534 Z" fill="#5C3E30" stroke="#8A6250" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M660,494 L698,494 L698,534 L660,534 Z" fill="#5C3E30" stroke="#8A6250" stroke-width="3" stroke-linejoin="round"/>
+        <!-- colchão -->
+        <path d="M132,396 L706,396 C712,396 716,400 716,406 L716,452 L132,452 Z"
+              fill="#F2E7D4" stroke="#FFFBF0" stroke-width="3" stroke-linejoin="round"/>
+      </g>
+      <g filter="url(#recorteQLeve)">
+        <!-- travesseiro -->
+        <path d="M180,406 C176,376 190,354 218,350 L296,344 C322,342 338,360 336,386 C334,404 320,414 300,414 L208,416 C190,416 182,412 180,406 Z"
+              fill="#F8F1E3" stroke="#FFFDF6" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M214,360 C240,354 278,352 310,358" fill="none" stroke="#E3D7C2" stroke-width="3" opacity=".8"/>
+        <!-- edredom -->
+        <path d="M300,400 L706,400 C716,400 722,406 722,416 L722,470 C700,482 660,476 620,480 C560,486 500,476 440,480 C388,484 340,474 300,478 Z"
+              fill="url(#edredom)" stroke="#DCE7F5" stroke-width="3" stroke-linejoin="round"/>
+        <!-- dobra de cima -->
+        <path d="M300,400 L706,400 C716,400 722,406 722,416 C700,426 660,420 620,424 C560,430 500,420 440,424 C388,428 340,418 300,422 Z"
+              fill="#E4EDF8" stroke="#F3F8FF" stroke-width="3" stroke-linejoin="round"/>
+        <g stroke="#96AAC4" stroke-width="4" opacity=".55" fill="none" stroke-linecap="round">
+          <path d="M394,434 C392,450 394,462 392,474"/>
+          <path d="M508,432 C506,448 508,462 506,476"/>
+          <path d="M622,430 C620,446 622,460 620,474"/>
+        </g>
+      </g>
+      </g>
+
+      <!-- ele, sentado na cama olhando a lua -->
+      <image href="menino.png" x="470" y="136" width="173" height="200"
+             filter="url(#luarNoMenino)"
+             preserveAspectRatio="xMidYMax meet"/>
+
+      <!-- poeirinha no ar -->
+      <g fill="#E6EDFF">
+        <circle class="polen"   cx="500" cy="470" r="4"/>
+        <circle class="polen-b" cx="360" cy="530" r="3.2"/>
+        <circle class="polen"   cx="828" cy="500" r="3.6" style="animation-delay:-6s"/>
+        <circle class="polen-b" cx="930" cy="440" r="3" style="animation-delay:-3s"/>
+      </g>
+
+      <rect width="1200" height="700" filter="url(#grao2)" opacity=".08" style="mix-blend-mode:multiply"/>
+    </svg>
+
+    <div class="fala-bloco">
+      <svg class="guirlanda" viewBox="0 0 760 86" aria-hidden="true">
+        <defs>
+          <path id="estrelinha" d="M0,-13 L3.4,-3.4 13,0 3.4,3.4 0,13 -3.4,3.4 -13,0 -3.4,-3.4 Z"/>
+          <mask id="mascaraLua" maskUnits="userSpaceOnUse" x="-44" y="-44" width="88" height="88">
+            <circle r="34" fill="#FFFFFF"/>
+            <circle cx="15" r="29" fill="#000000"/>
+          </mask>
+        </defs>
+        <g fill="#FFF6D9" stroke="#FFFDF2" stroke-width="2.6" stroke-linejoin="round">
+          <use href="#estrelinha" transform="translate(92 50) scale(1.15)"/>
+          <use href="#estrelinha" transform="translate(168 68) scale(.62)"/>
+          <use href="#estrelinha" transform="translate(252 46) scale(.82)"/>
+          <use href="#estrelinha" transform="translate(340 70) scale(.5)"/>
+          <use href="#estrelinha" transform="translate(428 54) scale(.7)"/>
+          <use href="#estrelinha" transform="translate(520 72) scale(.46)"/>
+          <use href="#estrelinha" transform="translate(576 50) scale(.9)"/>
+          <use href="#estrelinha" transform="translate(724 66) scale(.6)"/>
+        </g>
+        <g transform="translate(652 46) rotate(-24) scale(1.3)">
+          <circle r="34" fill="#FFF6D9" mask="url(#mascaraLua)"/>
+        </g>
+        <g fill="#FFF6D9" opacity=".8">
+          <circle cx="136" cy="72" r="3.4"/><circle cx="300" cy="58" r="3"/>
+          <circle cx="388" cy="74" r="2.6"/><circle cx="480" cy="48" r="3.2"/>
+          <circle cx="616" cy="74" r="2.8"/><circle cx="704" cy="44" r="3"/>
+        </g>
+      </svg>
+
+      <div class="caixa lunar" aria-live="polite">
+        <p class="fala">Já perdi as contas de quantos dias fiquei escorado na minha janela olhando pra lua e pensando em você, ou até mesmo olhando aquele caminho que fazíamos pra ir pro ponto, quando eu tinha bicicleta e andávamos juntos quase caindo, você ficava tão feliz, sempre topou minhas loucuras.</p>
+        <svg class="arremate" viewBox="0 0 120 26" aria-hidden="true">
+          <path d="M6,13 C26,13 36,13 46,13" fill="none" stroke="#3B4A85" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M74,13 C84,13 94,13 114,13" fill="none" stroke="#3B4A85" stroke-width="2.6" stroke-linecap="round"/>
+          <g transform="translate(60 13) scale(.34)">
+            <circle r="34" fill="#FFE29A" mask="url(#mascaraLua)"/>
+          </g>
+        </svg>
+        <div class="rodape-caixa" hidden>
+          <div class="pips" aria-hidden="true"></div>
+          <div class="seta" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ato" id="ato3">
+  <div class="cena palco">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Um palco de stand-up: parede de tijolos, cortinas vermelhas dos lados, um microfone no pedestal sob o refletor e um banquinho ao lado.">
+      <defs>
+        <pattern id="tijolos" width="124" height="62" patternUnits="userSpaceOnUse">
+          <rect width="124" height="62" fill="#4E332C"/>
+          <rect x="3"  y="3"  width="56" height="26" rx="3" fill="#6A4539"/>
+          <rect x="65" y="3"  width="56" height="26" rx="3" fill="#634034"/>
+          <rect x="-28" y="33" width="56" height="26" rx="3" fill="#664237"/>
+          <rect x="34" y="33" width="56" height="26" rx="3" fill="#6E4A3D"/>
+          <rect x="96" y="33" width="56" height="26" rx="3" fill="#634034"/>
+        </pattern>
+        <linearGradient id="veludo" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#F8CE48"/>
+          <stop offset="55%"  stop-color="#DFA81F"/>
+          <stop offset="100%" stop-color="#BC8710"/>
+        </linearGradient>
+        <linearGradient id="veludo2" x1="1" y1="0" x2="0" y2="0">
+          <stop offset="0%"   stop-color="#F8CE48"/>
+          <stop offset="55%"  stop-color="#DFA81F"/>
+          <stop offset="100%" stop-color="#BC8710"/>
+        </linearGradient>
+        <linearGradient id="chao" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#4A362E"/>
+          <stop offset="100%" stop-color="#2E211D"/>
+        </linearGradient>
+        <linearGradient id="feixe" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#FFE9B0" stop-opacity=".34"/>
+          <stop offset="100%" stop-color="#FFE9B0" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="poca" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#FFE2A2" stop-opacity=".5"/>
+          <stop offset="100%" stop-color="#FFE2A2" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#FFE9B0" stop-opacity=".26"/>
+          <stop offset="100%" stop-color="#FFE9B0" stop-opacity="0"/>
+        </radialGradient>
+
+        <linearGradient id="sumicoTrio" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="#FFFFFF" stop-opacity="1"/>
+          <stop offset="72%" stop-color="#FFFFFF" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+        </linearGradient>
+        <mask id="mascaraTrio" maskUnits="userSpaceOnUse" x="365" y="140" width="470" height="293">
+          <rect x="365" y="140" width="470" height="293" fill="url(#sumicoTrio)"/>
+        </mask>
+
+        <filter id="recorteP" x="-16%" y="-16%" width="136%" height="136%">
+          <feDropShadow dx="0" dy="7" stdDeviation="0" flood-color="#1A0F0C" flood-opacity=".5"/>
+        </filter>
+        <filter id="recortePLeve" x="-16%" y="-16%" width="136%" height="136%">
+          <feDropShadow dx="0" dy="4" stdDeviation="0" flood-color="#1A0F0C" flood-opacity=".38"/>
+        </filter>
+        <filter id="grao3">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/>
+          <feColorMatrix type="saturate" values="0"/>
+        </filter>
+      </defs>
+
+      <!-- parede de tijolos -->
+      <rect width="1200" height="700" fill="url(#tijolos)"/>
+      <rect width="1200" height="700" fill="#1E1410" opacity=".45"/>
+      <!-- clarão do refletor na parede -->
+      <ellipse cx="600" cy="200" rx="330" ry="250" fill="url(#halo)"/>
+
+      <!-- a placa do clube, na parede -->
+      <image href="barbixas.png" x="518" y="54" width="164" height="164"
+             filter="url(#recortePLeve)" preserveAspectRatio="xMidYMid meet"/>
+
+      <!-- chão do palco -->
+      <g filter="url(#recorteP)">
+        <path d="M-20,300 L1220,300 L1220,720 L-20,720 Z" fill="url(#chao)" stroke="#5E463B" stroke-width="3"/>
+      </g>
+      <g stroke="#241A16" stroke-width="3" opacity=".8">
+        <path d="M-20,372 L1220,372"/><path d="M-20,452 L1220,452"/><path d="M-20,548 L1220,548"/>
+      </g>
+
+      <!-- o feixe de luz -->
+      <path d="M566,-20 L634,-20 L916,600 L284,600 Z" fill="url(#feixe)"/>
+      <ellipse cx="600" cy="356" rx="232" ry="46" fill="url(#poca)"/>
+
+      <!-- cortinas laterais -->
+      <g class="brisa" filter="url(#recorteP)">
+        <path d="M-40,24 L246,24 L246,470 C220,484 194,468 168,482 C142,496 114,474 88,488 C62,502 20,484 -40,494 Z"
+              fill="url(#veludo)" stroke="#FFE28E" stroke-width="3" stroke-linejoin="round"/>
+        <g stroke="#FFE28E" stroke-width="7" opacity=".4" fill="none" stroke-linecap="round">
+          <path d="M52,36 C48,180 54,330 50,478"/>
+          <path d="M112,36 C108,180 114,330 110,480"/>
+          <path d="M172,36 C168,180 174,330 170,476"/>
+          <path d="M222,36 C218,180 224,330 220,470"/>
+        </g>
+      </g>
+      <g class="brisa-b" filter="url(#recorteP)">
+        <path d="M954,24 L1240,24 L1240,494 C1180,484 1138,502 1112,488 C1086,474 1058,496 1032,482 C1006,468 980,484 954,470 Z"
+              fill="url(#veludo2)" stroke="#FFE28E" stroke-width="3" stroke-linejoin="round"/>
+        <g stroke="#FFE28E" stroke-width="7" opacity=".4" fill="none" stroke-linecap="round">
+          <path d="M980,36 C984,180 978,330 982,470"/>
+          <path d="M1032,36 C1036,180 1030,330 1034,478"/>
+          <path d="M1090,36 C1094,180 1088,330 1092,482"/>
+          <path d="M1148,36 C1152,180 1146,330 1150,486"/>
+        </g>
+      </g>
+
+      <!-- bandô de veludo -->
+      <g filter="url(#recorteP)">
+        <path d="M-40,-10 L1240,-10 L1240,36 C1180,84 1120,84 1060,36 C1000,84 940,84 880,36 C820,84 760,84 700,36 C640,84 580,84 520,36 C460,84 400,84 340,36 C280,84 220,84 160,36 C100,84 40,84 -40,36 Z"
+              fill="url(#veludo)" stroke="#FFE28E" stroke-width="3" stroke-linejoin="round"/>
+      </g>
+
+      <!-- eles, logo atrás -->
+      <g mask="url(#mascaraTrio)">
+        <image href="trio.png" x="365" y="140" width="470" height="293" preserveAspectRatio="xMidYMax meet"/>
+      </g>
+
+      <!-- o banquinho -->
+      <g transform="translate(12 40)">
+      <g filter="url(#recorteP)">
+        <g stroke="#A8764D" stroke-width="3" stroke-linecap="round" fill="none">
+          <path d="M800,266 L778,356" stroke="#6E4730" stroke-width="11"/>
+          <path d="M886,266 L908,356" stroke="#6E4730" stroke-width="11"/>
+          <path d="M818,264 L812,352" stroke="#5C3A26" stroke-width="10"/>
+          <path d="M868,264 L874,352" stroke="#5C3A26" stroke-width="10"/>
+          <path d="M792,314 C824,324 862,324 894,314" stroke="#6E4730" stroke-width="8"/>
+        </g>
+        <path d="M780,252 C780,238 806,228 843,228 C880,228 906,238 906,252 L906,264 C906,278 880,288 843,288 C806,288 780,278 780,264 Z"
+              fill="#6E4730" stroke="#A8764D" stroke-width="3" stroke-linejoin="round"/>
+        <ellipse cx="843" cy="252" rx="63" ry="24" fill="#8A5C3C" stroke="#A8764D" stroke-width="3"/>
+        <ellipse cx="828" cy="245" rx="26" ry="9" fill="#9E6D48" opacity=".7"/>
+      </g>
+      </g>
+
+      <!-- o microfone -->
+      <g transform="translate(-290 0)">
+      <g filter="url(#recorteP)">
+        <!-- base -->
+        <ellipse cx="600" cy="352" rx="58" ry="15" fill="#26262E" stroke="#4A4A58" stroke-width="3"/>
+        <path d="M556,344 C556,334 576,328 600,328 C624,328 644,334 644,344 L644,352 C644,362 624,368 600,368 C576,368 556,362 556,352 Z"
+              fill="#1E1E26" stroke="#4A4A58" stroke-width="3" stroke-linejoin="round"/>
+        <!-- haste -->
+        <path d="M592,150 L608,150 L608,340 L592,340 Z" fill="#2E2E38" stroke="#4A4A58" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M595,156 L599,156 L599,334 L595,334 Z" fill="#6C6C80" opacity=".7"/>
+        <!-- regulador -->
+        <path d="M584,232 L616,232 L616,254 L584,254 Z" fill="#3C3C48" stroke="#5E5E70" stroke-width="3" stroke-linejoin="round"/>
+        <!-- cabeça do microfone -->
+        <g transform="rotate(-14 600 118)">
+          <path d="M578,86 C578,70 590,60 600,60 C610,60 622,70 622,86 L622,110 C622,124 612,132 600,132 C588,132 578,124 578,110 Z"
+                fill="#3C3F48" stroke="#71778A" stroke-width="3" stroke-linejoin="round"/>
+          <g stroke="#22252C" stroke-width="3" opacity=".8">
+            <path d="M581,78 L619,78"/><path d="M580,90 L620,90"/><path d="M580,102 L620,102"/><path d="M582,114 L618,114"/>
+          </g>
+          <path d="M586,132 L614,132 L612,152 L588,152 Z" fill="#26262E" stroke="#5E5E70" stroke-width="3" stroke-linejoin="round"/>
+        </g>
+        <!-- cabo -->
+        <path d="M606,356 C660,372 700,352 740,366 C782,380 812,368 856,378"
+              fill="none" stroke="#1A1A22" stroke-width="9" stroke-linecap="round"/>
+      </g>
+      </g>
+
+      <!-- poeirinha no feixe -->
+      <g fill="#FFF0C8">
+        <circle class="polen"   cx="540" cy="300" r="4"/>
+        <circle class="polen-b" cx="660" cy="250" r="3.2"/>
+        <circle class="polen"   cx="700" cy="330" r="3.6" style="animation-delay:-6s"/>
+        <circle class="polen-b" cx="480" cy="230" r="3" style="animation-delay:-3s"/>
+      </g>
+
+      <rect width="1200" height="700" filter="url(#grao3)" opacity=".09" style="mix-blend-mode:multiply"/>
+    </svg>
+
+    <div class="fala-bloco">
+      <svg class="guirlanda" viewBox="0 0 760 86" aria-hidden="true">
+        <defs>
+          <radialGradient id="brilhoLamp" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="#FFD98A" stop-opacity=".55"/>
+            <stop offset="100%" stop-color="#FFD98A" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <path d="M-6,44 Q380,74 766,44" fill="none" stroke="#8C6A34" stroke-width="4" stroke-linecap="round"/>
+        <g class="lampada">
+          <circle cx="32.6" cy="46.9" r="19" fill="url(#brilhoLamp)"/>
+          <circle cx="109.8" cy="51.7" r="19" fill="url(#brilhoLamp)"/>
+          <circle cx="187.0" cy="55.3" r="19" fill="url(#brilhoLamp)"/>
+          <circle cx="264.2" cy="57.7" r="19" fill="url(#brilhoLamp)"/>
+          <circle cx="341.4" cy="58.9" r="19" fill="url(#brilhoLamp)"/>
+          <circle cx="418.6" cy="58.9" r="19" fill="url(#brilhoLamp)"/>
+          <circle cx="495.8" cy="57.7" r="19" fill="url(#brilhoLamp)"/>
+          <circle cx="573.1" cy="55.3" r="19" fill="url(#brilhoLamp)"/>
+          <circle cx="650.2" cy="51.7" r="19" fill="url(#brilhoLamp)"/>
+          <circle cx="727.4" cy="46.9" r="19" fill="url(#brilhoLamp)"/>
+          <circle cx="32.6" cy="46.9" r="9.5" fill="#FFE9A8" stroke="#D9A648" stroke-width="2.6"/>
+          <circle cx="109.8" cy="51.7" r="9.5" fill="#FFDC8A" stroke="#D9A648" stroke-width="2.6"/>
+          <circle cx="187.0" cy="55.3" r="9.5" fill="#FFE9A8" stroke="#D9A648" stroke-width="2.6"/>
+          <circle cx="264.2" cy="57.7" r="9.5" fill="#FFDC8A" stroke="#D9A648" stroke-width="2.6"/>
+          <circle cx="341.4" cy="58.9" r="9.5" fill="#FFE9A8" stroke="#D9A648" stroke-width="2.6"/>
+          <circle cx="418.6" cy="58.9" r="9.5" fill="#FFDC8A" stroke="#D9A648" stroke-width="2.6"/>
+          <circle cx="495.8" cy="57.7" r="9.5" fill="#FFE9A8" stroke="#D9A648" stroke-width="2.6"/>
+          <circle cx="573.1" cy="55.3" r="9.5" fill="#FFDC8A" stroke="#D9A648" stroke-width="2.6"/>
+          <circle cx="650.2" cy="51.7" r="9.5" fill="#FFE9A8" stroke="#D9A648" stroke-width="2.6"/>
+          <circle cx="727.4" cy="46.9" r="9.5" fill="#FFDC8A" stroke="#D9A648" stroke-width="2.6"/>
+        </g>
+      </svg>
+
+      <div class="caixa palco" aria-live="polite">
+        <p class="fala">Um dos dias mais especiais da minha vida foi quando eu fui com você pros Barbixas, a gente tava meio distante e, quando você pegou na minha mão no Uber eu fiquei tão, mas tão feliz. Te ver rindo com o show ou com alguma bosta que eu falei era a melhor coisa do mundo, você tava tão linda com aquela jaqueta de couro. As caipirinhas que o limão era só de enfeite porque era puro álcool, as comidas todas boas, e o principal de tudo, você.</p>
+        <svg class="arremate" viewBox="0 0 120 26" aria-hidden="true">
+          <path d="M6,13 C26,13 36,13 46,13" fill="none" stroke="#6B3140" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M74,13 C84,13 94,13 114,13" fill="none" stroke="#6B3140" stroke-width="2.6" stroke-linecap="round"/>
+          <g transform="translate(60 13)">
+            <path d="M-5,-11 C-5,-14 -2,-16 0,-16 C2,-16 5,-14 5,-11 L5,-3 C5,0 3,2 0,2 C-3,2 -5,0 -5,-3 Z"
+                  fill="#F0BC5A" stroke="#8C6A34" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M-8,-4 C-8,3 -4,6 0,6 C4,6 8,3 8,-4" fill="none" stroke="#F0BC5A" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M0,6 L0,11 M-4,11 L4,11" stroke="#F0BC5A" stroke-width="2.4" stroke-linecap="round"/>
+          </g>
+        </svg>
+        <div class="rodape-caixa" hidden>
+          <div class="pips" aria-hidden="true"></div>
+          <div class="seta" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ato" id="ato4">
+  <div class="cena folha">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Uma folha de papel sobre a mesa, com fitas coladas nos cantos, esperando as fotos.">
+      <defs>
+        <linearGradient id="mesa" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#3E352F"/>
+          <stop offset="100%" stop-color="#2B241F"/>
+        </linearGradient>
+        <linearGradient id="folhaG" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%"   stop-color="#FDF7E9"/>
+          <stop offset="55%"  stop-color="#FAF2E1"/>
+          <stop offset="100%" stop-color="#F3E9D3"/>
+        </linearGradient>
+        <filter id="sombraFolha" x="-12%" y="-12%" width="124%" height="124%">
+          <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#150F0B" flood-opacity=".55"/>
+        </filter>
+        <filter id="recorteF" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#4A3A2A" flood-opacity=".3"/>
+        </filter>
+        <filter id="grao4">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4"/>
+          <feColorMatrix type="saturate" values="0"/>
+        </filter>
+      </defs>
+
+      <rect width="1200" height="700" fill="url(#mesa)"/>
+
+      <g transform="rotate(-1.1 600 350)">
+        <!-- a folha -->
+        <g filter="url(#sombraFolha)">
+          <path d="M126,-46 L1074,-52 C1078,120 1080,360 1076,560 C1072,660 1078,720 1072,760 L128,762 C122,620 120,380 124,180 Z"
+                fill="url(#folhaG)"/>
+        </g>
+
+        <!-- pautas bem clarinhas -->
+        <g stroke="#D3DEE6" stroke-width="2" opacity=".55">
+          <path d="M180,104 L1020,100"/><path d="M180,160 L1020,156"/><path d="M180,216 L1020,212"/>
+          <path d="M180,272 L1020,268"/><path d="M180,328 L1020,324"/><path d="M180,384 L1020,380"/>
+          <path d="M180,440 L1020,436"/><path d="M180,496 L1020,492"/><path d="M180,552 L1020,548"/>
+          <path d="M180,608 L1020,604"/><path d="M180,664 L1020,660"/>
+        </g>
+        <!-- vinco do meio, de dobrar a folha -->
+        <path d="M600,-40 L600,760" stroke="#E3D6BA" stroke-width="3" opacity=".55"/>
+        <path d="M604,-40 L604,760" stroke="#FFFBF0" stroke-width="2" opacity=".7"/>
+
+        <!-- as fotos, coladas -->
+        <g transform="rotate(-6 538 201)">
+          <g filter="url(#recorteF)">
+            <image href="foto1.png" x="452" y="70" width="172" height="263"/>
+          </g>
+          <path d="M444,86 L524,64 L531,90 L451,112 Z" fill="#F0DFA4" opacity=".8"/>
+          <path d="M444,86 L524,64 L531,90 L451,112 Z" fill="none" stroke="#DCC680" stroke-width="2" opacity=".55"/>
+        </g>
+        <g transform="rotate(5.5 668 234)">
+          <g filter="url(#recorteF)">
+            <image href="foto2.png" x="582" y="104" width="172" height="260"/>
+          </g>
+          <path d="M688,96 L762,116 L755,142 L681,122 Z" fill="#C9DEE9" opacity=".8"/>
+          <path d="M688,96 L762,116 L755,142 L681,122 Z" fill="none" stroke="#A8C4D2" stroke-width="2" opacity=".55"/>
+        </g>
+
+        <!-- fitas nos cantos -->
+        <g filter="url(#recorteF)">
+          <path d="M132,52 L286,14 L296,52 L142,90 Z" fill="#F0DFA4" opacity=".82"/>
+          <path d="M132,52 L286,14 L296,52 L142,90 Z" fill="none" stroke="#DCC680" stroke-width="2" opacity=".6"/>
+          <path d="M1064,30 L916,66 L926,104 L1074,68 Z" fill="#C9DEE9" opacity=".8"/>
+          <path d="M1064,30 L916,66 L926,104 L1074,68 Z" fill="none" stroke="#A8C4D2" stroke-width="2" opacity=".6"/>
+        </g>
+      </g>
+
+      <rect width="1200" height="700" filter="url(#grao4)" opacity=".1" style="mix-blend-mode:multiply"/>
+    </svg>
+
+    <div class="recado-papel">
+      <h2>Não consegui me desfazer</h2>
+      <svg class="risco" viewBox="0 0 340 16" aria-hidden="true">
+        <path d="M6,10 C58,4 112,13 166,7 C220,2 274,12 334,6"
+              fill="none" stroke="#2C3757" stroke-width="3.4" stroke-linecap="round" opacity=".75"/>
+        <path d="M14,14 C70,9 120,16 178,11 C232,7 282,15 326,11"
+              fill="none" stroke="#2C3757" stroke-width="2" stroke-linecap="round" opacity=".35"/>
+      </svg>
+      <p>nem de todo o resto também...</p>
+    </div>
+  </div>
+</section>
+
+<section class="ato" id="ato5">
+  <div class="cena gatinhos">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Uma cena cheia de gatinhos de papel recortado: um gato laranja sentado no meio, um cinza dormindo enrolado, um pretinho ao lado e um novelo de lã.">
+      <defs>
+        <linearGradient id="fundoGato" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#FFE8D8"/>
+          <stop offset="60%"  stop-color="#FFDAC4"/>
+          <stop offset="100%" stop-color="#FBC9AF"/>
+        </linearGradient>
+
+        <g id="pata">
+          <ellipse cx="0" cy="7" rx="11" ry="9"/>
+          <ellipse cx="-12" cy="-5" rx="4.6" ry="5.8"/>
+          <ellipse cx="-4.2" cy="-12" rx="4.6" ry="5.8"/>
+          <ellipse cx="4.2" cy="-12" rx="4.6" ry="5.8"/>
+          <ellipse cx="12" cy="-5" rx="4.6" ry="5.8"/>
+        </g>
+        <path id="coracao" d="M0,9 C-12,1 -16,-7 -10,-12 C-5,-16 -1,-12 0,-9 C1,-12 5,-16 10,-12 C16,-7 12,1 0,9 Z"/>
+
+        <pattern id="patinhas" width="210" height="210" patternUnits="userSpaceOnUse">
+          <g fill="#F3B795" opacity=".5">
+            <use href="#pata" transform="translate(42 46) rotate(-16) scale(.72)"/>
+            <use href="#pata" transform="translate(156 120) rotate(22) scale(.6)"/>
+            <use href="#pata" transform="translate(86 168) rotate(-30) scale(.52)"/>
+            <use href="#coracao" transform="translate(176 30) rotate(12) scale(.9)"/>
+            <use href="#coracao" transform="translate(18 134) rotate(-14) scale(.62)"/>
+          </g>
+        </pattern>
+
+        <filter id="recorteG5" x="-16%" y="-16%" width="136%" height="136%">
+          <feDropShadow dx="0" dy="7" stdDeviation="0" flood-color="#B2664A" flood-opacity=".26"/>
+        </filter>
+        <filter id="recorteG5Leve" x="-16%" y="-16%" width="136%" height="136%">
+          <feDropShadow dx="0" dy="4" stdDeviation="0" flood-color="#B2664A" flood-opacity=".2"/>
+        </filter>
+        <filter id="grao5">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/>
+          <feColorMatrix type="saturate" values="0"/>
+        </filter>
+      </defs>
+
+      <rect width="1200" height="700" fill="url(#fundoGato)"/>
+      <rect width="1200" height="700" fill="url(#patinhas)"/>
+
+      <rect width="1200" height="700" filter="url(#grao5)" opacity=".07" style="mix-blend-mode:multiply"/>
+    </svg>
+
+    <div class="fala-bloco">
+      <img class="gato-deitado" src="gatinho.png" alt="Um gatinho deitado de barriga pra cima em cima do balão." width="1076" height="620">
+
+      <div class="caixa gatinho" aria-live="polite">
+        <p class="fala">Foi muito difícil fazer isso e eu nem tô falando da programação, mas de ter que colocar pra fora todos esses sentimentos. Espero que isso não te traga emoções ruins, esse não é o objetivo de nada que tá aqui.</p>
+        <svg class="arremate" viewBox="0 0 120 26" aria-hidden="true">
+          <path d="M6,13 C26,13 36,13 46,13" fill="none" stroke="#EBD2BC" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M74,13 C84,13 94,13 114,13" fill="none" stroke="#EBD2BC" stroke-width="2.6" stroke-linecap="round"/>
+          <g transform="translate(60 13) scale(.58)" fill="#D98A6B">
+            <ellipse cx="0" cy="7" rx="11" ry="9"/>
+            <ellipse cx="-12" cy="-5" rx="4.6" ry="5.8"/>
+            <ellipse cx="-4.2" cy="-12" rx="4.6" ry="5.8"/>
+            <ellipse cx="4.2" cy="-12" rx="4.6" ry="5.8"/>
+            <ellipse cx="12" cy="-5" rx="4.6" ry="5.8"/>
+          </g>
+        </svg>
+        <div class="rodape-caixa" hidden>
+          <div class="pips" aria-hidden="true"></div>
+          <div class="seta" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ato" id="ato6">
+  <div class="cena ceu-carta">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Um céu ao entardecer, com estrelinhas surgindo.">
+      <defs>
+        <linearGradient id="ceuCarta" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#B9C3E8"/>
+          <stop offset="38%"  stop-color="#DCCBE0"/>
+          <stop offset="72%"  stop-color="#FBDCC6"/>
+          <stop offset="100%" stop-color="#FFD2BC"/>
+        </linearGradient>
+        <filter id="grao6">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/>
+          <feColorMatrix type="saturate" values="0"/>
+        </filter>
+      </defs>
+
+      <rect width="1200" height="700" fill="url(#ceuCarta)"/>
+
+      <!-- nuvenzinhas macias -->
+      <g fill="#FFFFFF" opacity=".5">
+        <path d="M120,190 q16,-40 60,-34 q18,-30 58,-22 q40,-10 56,26 q40,0 36,36 z"/>
+        <path d="M900,120 q12,-30 46,-26 q14,-22 44,-16 q30,-8 42,20 q30,0 28,28 z"/>
+        <path d="M620,72 q10,-26 38,-22 q12,-18 36,-14 q26,-6 36,16 q26,0 24,24 z" opacity=".7"/>
+      </g>
+
+      <!-- estrelinhas -->
+      <g fill="#FFF3D6">
+        <circle class="polen"   cx="240" cy="120" r="4"/>
+        <circle class="polen-b" cx="1020" cy="240" r="3.4"/>
+        <circle class="polen"   cx="420" cy="70" r="3" style="animation-delay:-7s"/>
+        <circle class="polen-b" cx="760" cy="180" r="3.6" style="animation-delay:-3s"/>
+        <circle class="polen"   cx="180" cy="330" r="3.2" style="animation-delay:-9s"/>
+        <circle class="polen-b" cx="1080" cy="90" r="3" style="animation-delay:-5s"/>
+      </g>
+
+      <rect width="1200" height="700" filter="url(#grao6)" opacity=".06" style="mix-blend-mode:multiply"/>
+    </svg>
+
+    <div class="envelope" id="envelope">
+      <button class="abre-envelope" id="abreEnvelope" type="button" aria-label="Abrir o envelope">
+        <svg viewBox="0 0 320 218" aria-hidden="true">
+          <g stroke="#3C2C1E" stroke-width="6" stroke-linejoin="round">
+            <path d="M14,30 C14,22 20,16 28,16 L292,16 C300,16 306,22 306,30 L306,188 C306,196 300,202 292,202 L28,202 C20,202 14,196 14,188 Z"
+                  fill="#FFF6E3"/>
+            <path d="M14,190 L128,110" fill="none" stroke-width="5"/>
+            <path d="M306,190 L192,110" fill="none" stroke-width="5"/>
+          </g>
+          <g class="aba">
+            <path d="M14,30 C14,22 20,16 28,16 L292,16 C300,16 306,22 306,30 L160,134 Z"
+                  fill="#FBEBD0" stroke="#3C2C1E" stroke-width="6" stroke-linejoin="round"/>
+            <g class="lacre" transform="translate(160 108)">
+              <g fill="#E5A526" stroke="#B8802A" stroke-width="3.5" stroke-linejoin="round">
+                <path d="M0,-9 C9,-15 11,-26 0,-34 C-11,-26 -9,-15 0,-9 Z"/>
+                <path d="M0,-9 C9,-15 11,-26 0,-34 C-11,-26 -9,-15 0,-9 Z" transform="rotate(45)"/>
+                <path d="M0,-9 C9,-15 11,-26 0,-34 C-11,-26 -9,-15 0,-9 Z" transform="rotate(90)"/>
+                <path d="M0,-9 C9,-15 11,-26 0,-34 C-11,-26 -9,-15 0,-9 Z" transform="rotate(135)"/>
+                <path d="M0,-9 C9,-15 11,-26 0,-34 C-11,-26 -9,-15 0,-9 Z" transform="rotate(180)"/>
+                <path d="M0,-9 C9,-15 11,-26 0,-34 C-11,-26 -9,-15 0,-9 Z" transform="rotate(225)"/>
+                <path d="M0,-9 C9,-15 11,-26 0,-34 C-11,-26 -9,-15 0,-9 Z" transform="rotate(270)"/>
+                <path d="M0,-9 C9,-15 11,-26 0,-34 C-11,-26 -9,-15 0,-9 Z" transform="rotate(315)"/>
+              </g>
+              <circle r="15" fill="#8A4A2E" stroke="#5E2F1C" stroke-width="3.5"/>
+              <circle r="6" fill="#A25A38"/>
+            </g>
+          </g>
+        </svg>
+      </button>
+
+      <div class="coracao-grande" id="coracaoGrande" aria-hidden="true">
+        <div class="bate">
+          <svg viewBox="0 0 200 196">
+            <ellipse cx="100" cy="96" rx="98" ry="94" fill="#F27D8E" opacity=".22"/>
+            <path d="M100,182 C40,134 12,98 12,66 C12,38 34,18 58,18 C77,18 93,29 100,45 C107,29 123,18 142,18 C166,18 188,38 188,66 C188,98 160,134 100,182 Z"
+                  fill="#E8506A" stroke="#FFF6E3" stroke-width="7" stroke-linejoin="round"/>
+            <path d="M100,182 C160,134 188,98 188,66 C188,38 166,18 142,18 C123,18 107,29 100,45 C104,62 116,74 120,96 C126,126 116,158 100,182 Z"
+                  fill="#C93E58" opacity=".45"/>
+            <ellipse cx="62" cy="56" rx="17" ry="12" transform="rotate(-32 62 56)" fill="#FFFFFF" opacity=".45"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="coracoes" id="coracoes" aria-hidden="true"></div>
+
+      <div class="rastro" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <p class="dica-envelope" id="dicaEnvelope">toque no envelope</p>
+
+    <button class="recomecar" id="recomecar" type="button" title="recomeçar a pergunta" aria-label="Recomeçar a pergunta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/>
+        <path d="M6 3v4h4"/>
+      </svg>
+    </button>
+
+    <p class="recado-nao" id="recadoNao" hidden></p>
+
+    <audio id="somConfete" src="confete.mp3" preload="auto"></audio>
+
+    <div class="pergunta" id="pergunta" hidden>
+      <div class="cartao-pergunta">
+        <h2 id="tituloPergunta">Aceita ele de novo?</h2>
+        <div class="botoes" id="botoesPergunta">
+          <button class="resposta sim" id="btnSim" type="button">Sim</button>
+          <button class="resposta nao" id="btnNao" type="button">Não</button>
+        </div>
+        <p class="aviso-escolha" id="avisoEscolha">essa resposta não vai pra mim, é simbólico</p>
+        <p class="resposta-texto" id="respostaTexto" hidden></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const CENAS = [
+    { ato: 'ato1', falas: [
+      'Espero que você esteja bem, quis começar com esse girassol, porque foi uma das primeiras coisas que fiz pra você, com a música do Tom Jobim, que você passou a gostar depois. Lembro de você toda vez que escuto em qualquer lugar.',
+      'Eu tenho MUITOS arrependimentos e culpa por tudo que deixei acontecer, e tudo que eu queria no mundo era poder olhar nos seus olhos e te pedir desculpas, desculpas de novo, sentir seu abraço mais uma vez, seu perfume que a todo momento sinto, mesmo que você não esteja mais por perto.',
+      'Toda vez que alguma lembrança vem meu peito queima demais, porque eu sei que talvez nunca mais eu vou ter você do meu lado de novo e isso acaba comigo de uma forma destruidora, não consigo controlar esses sentimentos e por isso eu tô aqui mais uma vez, porque eu ainda te amo muito.',
+      'Eu te amo por você ter me mostrado o amor, eu te amo por todas as suas enchações de saco que você fazia comigo pra me irritar, e que agora, eu faria de tudo pra ter de novo, eu te amo pelo seu jeitinho grudento que ficava me abraçando pelas costas enquanto eu fazia coisa pra você comer, te amo por você ser como é, eu <span class="amor">TE AMO</span> por tudo que você me fez sentir em apenas 1 ano.',
+      'Não consigo entender o porquê desse sentimento, o porquê de isso me afetar tanto, escrever tudo isso tá sendo uma tortura, porque é o que eu mais tento deixar pra lá, e dar tempo ao tempo, mas não tá funcionando mais, e sendo sincero comigo mesmo, eu não consigo aceitar te perder.'
+    ]},
+    { ato: 'ato2', falas: [
+      'Já perdi as contas de quantos dias fiquei escorado na minha janela olhando pra lua e pensando em você, ou até mesmo olhando aquele caminho que fazíamos pra ir pro ponto, quando eu tinha bicicleta e andávamos juntos quase caindo, você ficava tão feliz, sempre topou minhas loucuras.',
+      'Quero que você saiba que eu lembro de cada detalhe, cada brincadeira, cada careta que você fazia, cada beijo que me fazia sentir o maior conforto do mundo, cada abraço, cada tudo, porque você foi a pessoa que me fez sentir mais vivo na minha vida toda, e eu quero isso de novo, eu não quero deixar uma pessoa tão especial e que me faz tão bem ir embora assim.',
+      'Não consigo tirar da cabeça o quanto eu podia ter sido melhor pra você, ter te dado mais apoio quando você precisou e falar o quanto você era importante na minha vida. Mas eu era idiota, eu cresci muito durante esse tempo, mudei muitos pensamentos e ações que antes fazia, mas hoje não faço mais, mas esse sentimento de culpa ainda prevalece forte junto da saudade esmagadora que eu sinto de nós dois.'
+    ]},
+    { ato: 'ato3', falas: [
+      'Um dos dias mais especiais da minha vida foi quando eu fui com você pros Barbixas, a gente tava meio distante e, quando você pegou na minha mão no Uber eu fiquei tão, mas tão feliz. Te ver rindo com o show ou com alguma bosta que eu falei era a melhor coisa do mundo, você tava tão linda com aquela jaqueta de couro. As caipirinhas que o limão era só de enfeite porque era puro álcool, as comidas todas boas, e o principal de tudo, você.'
+    ]},
+    { ato: 'ato4', falas: [] },
+    { ato: 'ato5', falas: [
+      'Foi muito difícil fazer isso e eu nem tô falando da programação, mas de ter que colocar pra fora todos esses sentimentos. Espero que isso não te traga emoções ruins, esse não é o objetivo de nada que tá aqui.',
+      'O objetivo de tudo isso é mostrar que eu mudei, eu reconheci todos os meus erros, eu cresci, não sou mais um adolescente tecnicamente. E que, eu espero que, se ainda lembra de mim, se ainda acende qualquer faísca, fala comigo, uma nova chance.'
+    ]}
+  ];
+
+  CENAS.forEach(cena => {
+    const ato   = document.getElementById(cena.ato);
+    if (!ato) return;
+    const bloco = ato.querySelector('.fala-bloco');
+    const n     = cena.falas.length;
+
+    if (!n){ if (bloco) bloco.remove(); return; }
+
+    const fala   = ato.querySelector('.fala');
+    const pips   = ato.querySelector('.pips');
+    const rodape = ato.querySelector('.rodape-caixa');
+    const seta   = ato.querySelector('.seta');
+
+    /* espaço de rolagem: um trecho por fala */
+    for (let k = 0; k < n; k++){
+      const d = document.createElement('div');
+      d.className = 'passo';
+      ato.appendChild(d);
+    }
+
+    let bolinhas = [];
+    if (n > 1){
+      rodape.hidden = false;
+      pips.innerHTML = Array.from({ length: n }, () => '<i></i>').join('');
+      bolinhas = [...pips.children];
+    }
+
+    let atual = -1;
+
+    function mostrar(i){
+      if (i === atual) return;
+      const primeiro = atual === -1;
+      atual = i;
+
+      const pintar = () => {
+        fala.innerHTML = cena.falas[i];
+        fala.classList.remove('trocando');
+      };
+
+      if (primeiro) pintar();
+      else {
+        fala.classList.add('trocando');
+        setTimeout(pintar, 180);
+      }
+
+      bolinhas.forEach((b, k) => b.classList.toggle('ativo', k === i));
+      seta.classList.toggle('fim', i === n - 1);
+    }
+
+    function acompanhar(){
+      const r = ato.getBoundingClientRect();
+      const total = r.height - window.innerHeight;
+      const p = total > 0 ? Math.min(Math.max(-r.top / total, 0), 0.999) : 0;
+      mostrar(Math.floor(p * n));
+    }
+
+    mostrar(0);
+    if (n > 1){
+      addEventListener('scroll', acompanhar, { passive: true });
+      addEventListener('resize', acompanhar);
+    }
+  });
+
+
+
+  /* ---------- parallax: a cena que sai fica pra trás, o fundo anda mais devagar ---------- */
+  (function(){
+    const atos  = [...document.querySelectorAll('.ato')];
+    const cenas = atos.map(a => a.querySelector('.cena'));
+    const fundos = cenas.map(c => c ? c.querySelector(':scope > svg') : null);
+
+    const suavizar = t => t * t * (3 - 2 * t);
+    const limitar  = t => Math.min(Math.max(t, 0), 1);
+
+    function parallax(){
+      const H = window.innerHeight;
+      for (let i = 0; i < atos.length; i++){
+        const c = cenas[i];
+        if (!c) continue;
+        const r = atos[i].getBoundingClientRect();
+
+        /* saindo: a cena fica pra trás enquanto a próxima sobe por cima */
+        const saida = suavizar(limitar((H - r.bottom) / H));
+        c.style.transform = saida > 0
+          ? 'translateY(' + (saida * 20).toFixed(2) + '%) scale(' + (1 + saida * 0.05).toFixed(4) + ')'
+          : '';
+        c.style.setProperty('--veu', (saida * 0.5).toFixed(3));
+
+        /* entrando: o fundo sobe mais devagar que a moldura */
+        const f = fundos[i];
+        if (f){
+          const entrada = limitar(r.top / H);
+          f.style.transform = entrada > 0
+            ? 'translateY(' + (-entrada * 11).toFixed(2) + '%) scale(' + (1 + entrada * 0.06).toFixed(4) + ')'
+            : '';
+        }
+      }
+    }
+
+    parallax();
+    addEventListener('scroll', parallax, { passive: true });
+    addEventListener('resize', parallax);
+  })();
+
+  /* ---------- o envelope sobe conforme a tela desce ---------- */
+  (function(){
+    const atoEnv   = document.getElementById('ato6');
+    const envelope = document.getElementById('envelope');
+    if (!atoEnv || !envelope) return;
+
+    for (let k = 0; k < 2; k++){
+      const d = document.createElement('div');
+      d.className = 'passo';
+      atoEnv.appendChild(d);
+    }
+
+    function voar(){
+      const r = atoEnv.getBoundingClientRect();
+      const total = r.height - window.innerHeight;
+      const p = total > 0 ? Math.min(Math.max(-r.top / total, 0), 1) : 0;
+      const f = p * p * (3 - 2 * p);           /* suaviza as pontas */
+      const y   = 26 - f * 54;
+      const giro = 7 - f * 13;
+      const esc = 0.86 + f * 0.24;
+      envelope.style.transform =
+        'translate(-50%, calc(-50% + ' + y.toFixed(2) + 'svh)) rotate(' + giro.toFixed(2) + 'deg) scale(' + esc.toFixed(3) + ')';
+    }
+
+    voar();
+    addEventListener('scroll', voar, { passive: true });
+    addEventListener('resize', voar);
+  })();
+
+
+  /* ---------- o envelope abre, os corações saem, a pergunta aparece ---------- */
+  (function(){
+    const envelope = document.getElementById('envelope');
+    const botao    = document.getElementById('abreEnvelope');
+    const caixaC   = document.getElementById('coracoes');
+    const dica     = document.getElementById('dicaEnvelope');
+    const pergunta = document.getElementById('pergunta');
+    const botoes   = document.getElementById('botoesPergunta');
+    const titulo   = document.getElementById('tituloPergunta');
+    const texto    = document.getElementById('respostaTexto');
+    const cartao   = document.querySelector('.cartao-pergunta');
+    const aviso    = document.getElementById('avisoEscolha');
+    if (!envelope || !botao) return;
+
+    const CORES = ['#F27D8E', '#F5A0A8', '#E8705A', '#F9C63F', '#EE9A6E'];
+
+    function soltarCoracoes(quantos){
+      for (let i = 0; i < quantos; i++){
+        const s = document.createElement('span');
+        const inner = document.createElement('i');
+        s.appendChild(inner);
+        s.style.setProperty('--dx',  (Math.random() * 260 - 130).toFixed(0) + 'px');
+        s.style.setProperty('--dy',  (-180 - Math.random() * 150).toFixed(0) + 'px');
+        s.style.setProperty('--tam', (13 + Math.random() * 14).toFixed(0) + 'px');
+        s.style.setProperty('--dur', (1.8 + Math.random() * 1.4).toFixed(2) + 's');
+        s.style.setProperty('--cor', CORES[i % CORES.length]);
+        s.style.animationDelay = (Math.random() * 0.5).toFixed(2) + 's';
+        caixaC.appendChild(s);
+        setTimeout(() => s.remove(), 3800);
+      }
+    }
+
+    /* ---------- a festa: confetes e gatinhos subindo ---------- */
+    const festa = document.getElementById('festa');
+    const CONFETES = ['#F9C63F', '#E8705A', '#F27D8E', '#8FC96B', '#B9A6E8', '#FFF6E3', '#7FCFE8'];
+    const GATOS = ['gatinho.png'];
+
+    function pecaNova(dentro, dur){
+      const p = document.createElement('div');
+      p.className = 'peca';
+      p.style.left = (Math.random() * 100).toFixed(1) + '%';
+      p.style.setProperty('--dur', dur.toFixed(2) + 's');
+      p.style.setProperty('--dx', (Math.random() * 240 - 120).toFixed(0) + 'px');
+      p.style.setProperty('--giro', (Math.random() * 1080 - 540).toFixed(0) + 'deg');
+      p.style.animationDelay = (Math.random() * 1.1).toFixed(2) + 's';
+      p.appendChild(dentro);
+      festa.appendChild(p);
+      setTimeout(() => p.remove(), (dur + 1.6) * 1000);
+    }
+
+    function festejar(){
+      for (let i = 0; i < 54; i++){
+        const c = document.createElement('span');
+        c.className = 'confete';
+        c.style.setProperty('--cor', CONFETES[i % CONFETES.length]);
+        c.style.setProperty('--tam', (7 + Math.random() * 9).toFixed(0) + 'px');
+        c.style.setProperty('--prop', (Math.random() < .3 ? 1 : 1.9).toFixed(2));
+        c.style.setProperty('--raio', Math.random() < .3 ? '50%' : '2px');
+        pecaNova(c, 3.4 + Math.random() * 2.6);
+      }
+      for (let i = 0; i < 9; i++){
+        const g = document.createElement('img');
+        g.className = 'gato';
+        g.src = GATOS[i % GATOS.length];
+        g.alt = '';
+        g.style.setProperty('--tam', (72 + Math.random() * 78).toFixed(0) + 'px');
+        pecaNova(g, 4.6 + Math.random() * 2.8);
+        g.parentElement.style.setProperty('--giro', (Math.random() * 60 - 30).toFixed(0) + 'deg');
+      }
+    }
+
+    function mostrarSim(comFesta){
+      voltarPraCaixa();
+      botoes.hidden = true;
+      if (aviso) aviso.hidden = true;
+      cartao.classList.remove('despedida');
+      cartao.classList.add('balao');
+      titulo.textContent = 'me chama, pfv';
+      texto.hidden = true;
+      if (comFesta){
+        const som = document.getElementById('somConfete');
+        if (som){ try { som.currentTime = 0; som.volume = 0.75; som.play(); } catch(e){} }
+        soltarCoracoes(20);
+        festejar();
+        setTimeout(festejar, 1400);
+        setTimeout(festejar, 3000);
+      }
+      try { localStorage.setItem('campo-girassol-resposta', 'sim'); } catch(e){}
+    }
+
+    function mostrarNao(){
+      botoes.hidden = true;
+      if (aviso) aviso.hidden = true;
+      cartao.classList.remove('balao');
+      cartao.classList.add('despedida');
+      titulo.textContent = 'chegar até aqui significa muito pra mim';
+      texto.hidden = true;
+      try { localStorage.setItem('campo-girassol-resposta', 'nao'); } catch(e){}
+    }
+
+    /* ---------- o não foge duas vezes antes de valer ---------- */
+    const btnNao  = document.getElementById('btnNao');
+    const recado  = document.getElementById('recadoNao');
+    const cena    = document.querySelector('#ato6 .cena');
+    const RECADOS = ['certeza?', 'absoluta?'];
+    let fugas = 0;
+
+    function dizerRecado(texto){
+      recado.hidden = false;
+      recado.textContent = texto;
+      recado.style.animation = 'none';
+      void recado.offsetWidth;
+      recado.style.animation = '';
+    }
+
+    function voltarPraCaixa(){
+      btnNao.classList.remove('fugindo');
+      btnNao.style.left = '';
+      btnNao.style.top  = '';
+      if (btnNao.parentElement !== botoes) botoes.appendChild(btnNao);
+      recado.hidden = true;
+      fugas = 0;
+    }
+
+    function fugir(){
+      const r = cena.getBoundingClientRect();
+      const b = btnNao.getBoundingClientRect();
+      const larg = b.width, alt = b.height;
+
+      if (!btnNao.classList.contains('fugindo')){
+        cena.appendChild(btnNao);
+        btnNao.classList.add('fugindo');
+        btnNao.style.left = (b.left - r.left).toFixed(0) + 'px';
+        btnNao.style.top  = (b.top  - r.top ).toFixed(0) + 'px';
+        void btnNao.offsetWidth;            /* obriga o navegador a partir daqui */
+      }
+
+      const px = parseFloat(btnNao.style.left) || 0;
+      const py = parseFloat(btnNao.style.top)  || 0;
+      const margem = 16;
+      const maxX = Math.max(10, r.width  - larg - margem * 2);
+      const maxY = Math.max(10, r.height - alt  - margem * 2);
+
+      /* o cartão da pergunta é zona proibida, pra não sumir atrás dele */
+      const c = cartao.getBoundingClientRect();
+      const proibido = { x1: c.left - r.left - 12, y1: c.top - r.top - 12,
+                         x2: c.right - r.left + 12, y2: c.bottom - r.top + 12 };
+
+      let x = px, y = py;
+      for (let t = 0; t < 30; t++){
+        const nx = margem + Math.random() * maxX;
+        const ny = margem + Math.random() * maxY;
+        const longe = Math.hypot(nx - px, ny - py) > Math.min(r.width, r.height) * 0.34;
+        const bate  = nx + larg > proibido.x1 && nx < proibido.x2 &&
+                      ny + alt  > proibido.y1 && ny < proibido.y2;
+        if (longe && !bate){ x = nx; y = ny; break; }
+        if (t === 29){ x = nx; y = ny; }
+      }
+
+      requestAnimationFrame(() => {
+        btnNao.style.left = x.toFixed(0) + 'px';
+        btnNao.style.top  = y.toFixed(0) + 'px';
+      });
+    }
+
+    let aberto = false;
+    botao.addEventListener('click', () => {
+      soltarCoracoes(aberto ? 6 : 9);
+      if (aberto) return;
+      aberto = true;
+      envelope.classList.add('aberto');
+      if (dica) dica.hidden = true;
+      setTimeout(() => { pergunta.hidden = false; }, 620);
+    });
+
+    /* se ela já respondeu antes, a página lembra */
+    let antes = null;
+    try { antes = localStorage.getItem('campo-girassol-resposta'); } catch(e){}
+    if (antes === 'sim' || antes === 'nao'){
+      aberto = true;
+      envelope.classList.add('aberto');
+      if (dica) dica.hidden = true;
+      pergunta.hidden = false;
+      if (antes === 'sim') mostrarSim(false); else mostrarNao();
+    }
+
+
+    /* ---------- botãozinho de teste: devolve a pergunta ---------- */
+    const btnRecomecar = document.getElementById('recomecar');
+    if (btnRecomecar){
+      /* invisível de propósito: só reage a três toques seguidos no cantinho */
+      let toques = 0, relogioToque = null;
+      btnRecomecar.addEventListener('click', () => {
+        toques++;
+        clearTimeout(relogioToque);
+        relogioToque = setTimeout(() => { toques = 0; }, 1400);
+        if (toques < 3) return;
+        toques = 0;
+        btnRecomecar.classList.add('aparece');
+        setTimeout(() => btnRecomecar.classList.remove('aparece'), 900);
+        try { localStorage.removeItem('campo-girassol-resposta'); } catch(e){}
+        voltarPraCaixa();
+        cartao.classList.remove('balao', 'despedida');
+        titulo.textContent = 'Aceita ele de novo?';
+        texto.hidden = true;
+        botoes.hidden = false;
+        if (aviso) aviso.hidden = false;
+        pergunta.hidden = false;
+        aberto = true;
+        envelope.classList.add('aberto');
+        if (dica) dica.hidden = true;
+      });
+    }
+
+    document.getElementById('btnSim').addEventListener('click', () => mostrarSim(true));
+    btnNao.addEventListener('click', () => {
+      if (fugas < RECADOS.length){
+        dizerRecado(RECADOS[fugas]);
+        fugas++;
+        fugir();
+        return;
+      }
+      voltarPraCaixa();
+      mostrarNao();
+    });
+  })();
+
+  /* ---------- abertura ---------- */
+  const CHAVE_VISITA = 'campo-girassol-visita';
+  const ler    = k => { try { return localStorage.getItem(k); } catch(e){ return null; } };
+  const gravar = (k, v) => { try { localStorage.setItem(k, v); } catch(e){} };
+
+  const abertura = document.getElementById('abertura');
+  const comecar  = document.getElementById('comecar');
+
+  if (!ler(CHAVE_VISITA)){
+    abertura.hidden = false;
+    document.body.style.overflow = 'hidden';
+    comecar.addEventListener('click', () => {
+      gravar(CHAVE_VISITA, '1');
+      abertura.classList.add('saindo');
+      setTimeout(() => { abertura.hidden = true; document.body.style.overflow = ''; }, 420);
+    });
+  }
+
+</script>
+
+</body>
+</html>
