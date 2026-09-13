@@ -86,10 +86,7 @@
 
 
   /* ---------- parallax nas trocas de cena ---------- */
-  .cena{
-    transform-origin: center center;
-    will-change: transform;
-  }
+  .cena{ transform-origin: center center; }
   .cena::after{
     content: "";
     position: absolute;
@@ -99,7 +96,9 @@
     pointer-events: none;
     z-index: 12;
   }
-  .cena > svg{ will-change: transform; }
+
+  .cena.dormindo *{ animation-play-state: paused !important; }
+  .cena:not(.dormindo), .cena:not(.dormindo) > svg{ will-change: transform; }
 
   .passo{ height: 92svh; }
   .cena.noite{ background: #3A3356; }
@@ -414,7 +413,6 @@
     width: min(340px, 58%);
     transform: translate(-50%, calc(-50% + 26svh)) rotate(7deg) scale(.86);
     filter: drop-shadow(0 16px 24px rgba(90,60,40,.32));
-    will-change: transform;
   }
   .envelope > svg{ width: 100%; height: auto; display: block; }
 
@@ -901,10 +899,6 @@
         <filter id="recorteLeve" x="-14%" y="-14%" width="132%" height="132%">
           <feDropShadow dx="0" dy="4" stdDeviation="0" flood-color="#2B3C1A" flood-opacity=".18"/>
         </filter>
-        <filter id="grao">
-          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/>
-          <feColorMatrix type="saturate" values="0"/>
-        </filter>
 
         <path id="petala" d="M600,214 C641,182 654,112 600,48 C546,112 559,182 600,214 Z"/>
         <g id="tufo">
@@ -1075,7 +1069,6 @@
         <circle class="polen-b" cx="330" cy="430" r="3.5" style="animation-delay:-2s"/>
       </g>
 
-      <rect width="1200" height="700" filter="url(#grao)" opacity=".07" style="mix-blend-mode:multiply"/>
     </svg>
 
     <!-- a garota -->
@@ -1191,10 +1184,6 @@
         </filter>
         <filter id="recorteQLeve" x="-16%" y="-16%" width="136%" height="136%">
           <feDropShadow dx="0" dy="4" stdDeviation="0" flood-color="#140F26" flood-opacity=".36"/>
-        </filter>
-        <filter id="grao2">
-          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/>
-          <feColorMatrix type="saturate" values="0"/>
         </filter>
 
         <filter id="luarNoMenino" x="-16%" y="-16%" width="132%" height="132%">
@@ -1343,7 +1332,6 @@
         <circle class="polen-b" cx="930" cy="440" r="3" style="animation-delay:-3s"/>
       </g>
 
-      <rect width="1200" height="700" filter="url(#grao2)" opacity=".08" style="mix-blend-mode:multiply"/>
     </svg>
 
     <div class="fala-bloco">
@@ -1446,10 +1434,6 @@
         </filter>
         <filter id="recortePLeve" x="-16%" y="-16%" width="136%" height="136%">
           <feDropShadow dx="0" dy="4" stdDeviation="0" flood-color="#1A0F0C" flood-opacity=".38"/>
-        </filter>
-        <filter id="grao3">
-          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/>
-          <feColorMatrix type="saturate" values="0"/>
         </filter>
       </defs>
 
@@ -1560,7 +1544,6 @@
         <circle class="polen-b" cx="480" cy="230" r="3" style="animation-delay:-3s"/>
       </g>
 
-      <rect width="1200" height="700" filter="url(#grao3)" opacity=".09" style="mix-blend-mode:multiply"/>
     </svg>
 
     <div class="fala-bloco">
@@ -1636,10 +1619,6 @@
         <filter id="recorteF" x="-20%" y="-20%" width="140%" height="140%">
           <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#4A3A2A" flood-opacity=".3"/>
         </filter>
-        <filter id="grao4">
-          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4"/>
-          <feColorMatrix type="saturate" values="0"/>
-        </filter>
       </defs>
 
       <rect width="1200" height="700" fill="url(#mesa)"/>
@@ -1687,7 +1666,6 @@
         </g>
       </g>
 
-      <rect width="1200" height="700" filter="url(#grao4)" opacity=".1" style="mix-blend-mode:multiply"/>
     </svg>
 
     <div class="recado-papel">
@@ -1738,16 +1716,11 @@
         <filter id="recorteG5Leve" x="-16%" y="-16%" width="136%" height="136%">
           <feDropShadow dx="0" dy="4" stdDeviation="0" flood-color="#B2664A" flood-opacity=".2"/>
         </filter>
-        <filter id="grao5">
-          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/>
-          <feColorMatrix type="saturate" values="0"/>
-        </filter>
       </defs>
 
       <rect width="1200" height="700" fill="url(#fundoGato)"/>
       <rect width="1200" height="700" fill="url(#patinhas)"/>
 
-      <rect width="1200" height="700" filter="url(#grao5)" opacity=".07" style="mix-blend-mode:multiply"/>
     </svg>
 
     <div class="fala-bloco">
@@ -1785,10 +1758,6 @@
           <stop offset="72%"  stop-color="#FBDCC6"/>
           <stop offset="100%" stop-color="#FFD2BC"/>
         </linearGradient>
-        <filter id="grao6">
-          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/>
-          <feColorMatrix type="saturate" values="0"/>
-        </filter>
       </defs>
 
       <rect width="1200" height="700" fill="url(#ceuCarta)"/>
@@ -1810,7 +1779,6 @@
         <circle class="polen-b" cx="1080" cy="90" r="3" style="animation-delay:-5s"/>
       </g>
 
-      <rect width="1200" height="700" filter="url(#grao6)" opacity=".06" style="mix-blend-mode:multiply"/>
     </svg>
 
     <div class="envelope" id="envelope">
@@ -1891,6 +1859,20 @@
 </section>
 
 <script>
+  /* tudo que reage à rolagem passa por aqui: um ouvinte só, um cálculo por quadro */
+  const NA_ROLAGEM = [];
+  let quadroAgendado = false;
+  function aoRolar(){
+    if (quadroAgendado) return;
+    quadroAgendado = true;
+    requestAnimationFrame(() => {
+      quadroAgendado = false;
+      for (const f of NA_ROLAGEM) f();
+    });
+  }
+  addEventListener('scroll', aoRolar, { passive: true });
+  addEventListener('resize', aoRolar);
+
   const CENAS = [
     { ato: 'ato1', falas: [
       'Espero que você esteja bem, quis começar com esse girassol, porque foi uma das primeiras coisas que fiz pra você, com a música do Tom Jobim, que você passou a gostar depois. Lembro de você toda vez que escuto em qualquer lugar.',
@@ -1972,12 +1954,66 @@
 
     mostrar(0);
     if (n > 1){
-      addEventListener('scroll', acompanhar, { passive: true });
-      addEventListener('resize', acompanhar);
+      NA_ROLAGEM.push(acompanhar);
     }
   });
 
 
+
+
+  /* ---------- sombras de papel sem filtro ----------
+     feDropShadow custa caro no celular: cada grupo filtrado obriga o navegador
+     a redesenhar tudo num buffer à parte. Como as sombras daqui não têm desfoque,
+     dá pra fazer o mesmo efeito duplicando o recorte deslocado por baixo. */
+  (function(){
+    const SOMBRAS = {
+      recorte:      { dy: 7, cor: '#2B3C1A', op: .26 },
+      recorteLeve:  { dy: 4, cor: '#2B3C1A', op: .18 },
+      recorteQ:     { dy: 7, cor: '#140F26', op: .50 },
+      recorteQLeve: { dy: 4, cor: '#140F26', op: .36 },
+      recorteP:     { dy: 7, cor: '#1A0F0C', op: .50 },
+      recortePLeve: { dy: 4, cor: '#1A0F0C', op: .38 },
+      recorteG5:    { dy: 7, cor: '#B2664A', op: .26 },
+      recorteG5Leve:{ dy: 4, cor: '#B2664A', op: .20 }
+    };
+
+    function pintar(no, cor, raiz){
+      const f = no.getAttribute('fill');
+      /* na raiz a cor é imposta pra descer por herança; nos filhos só onde já havia cor,
+         senão um fill="none" herdado vira mancha */
+      if (f !== 'none' && (raiz || f)) no.setAttribute('fill', cor);
+      const t = no.getAttribute('stroke');
+      if (t && t !== 'none') no.setAttribute('stroke', cor);
+      no.removeAttribute('filter');
+      no.removeAttribute('opacity');
+      no.removeAttribute('fill-opacity');
+      no.removeAttribute('stroke-opacity');
+      no.removeAttribute('style');
+      no.removeAttribute('class');
+      no.removeAttribute('mask');
+    }
+
+    const alvos = [...document.querySelectorAll('.cena svg g[filter]')].filter(g => {
+      const m = /url\(#([^)]+)\)/.exec(g.getAttribute('filter') || '');
+      return m && SOMBRAS[m[1]];
+    });
+
+    const marcados = alvos.map(g => {
+      const id = /url\(#([^)]+)\)/.exec(g.getAttribute('filter'))[1];
+      g.removeAttribute('filter');
+      return [g, SOMBRAS[id]];
+    });
+
+    for (const [g, s] of marcados){
+      const copia = g.cloneNode(true);
+      pintar(copia, s.cor, true);
+      copia.querySelectorAll('*').forEach(n => pintar(n, s.cor, false));
+      const antes = g.getAttribute('transform');
+      copia.setAttribute('transform', (antes ? antes + ' ' : '') + 'translate(0 ' + s.dy + ')');
+      copia.setAttribute('opacity', s.op);
+      g.parentNode.insertBefore(copia, g);
+    }
+  })();
 
   /* ---------- parallax: a cena que sai fica pra trás, o fundo anda mais devagar ---------- */
   (function(){
@@ -1997,25 +2033,28 @@
 
         /* saindo: a cena fica pra trás enquanto a próxima sobe por cima */
         const saida = suavizar(limitar((H - r.bottom) / H));
-        c.style.transform = saida > 0
-          ? 'translateY(' + (saida * 20).toFixed(2) + '%) scale(' + (1 + saida * 0.05).toFixed(4) + ')'
-          : '';
+        c.style.transform = saida > 0 ? 'translateY(' + (saida * 20).toFixed(2) + '%)' : '';
         c.style.setProperty('--veu', (saida * 0.5).toFixed(3));
 
         /* entrando: o fundo sobe mais devagar que a moldura */
         const f = fundos[i];
         if (f){
           const entrada = limitar(r.top / H);
-          f.style.transform = entrada > 0
-            ? 'translateY(' + (-entrada * 11).toFixed(2) + '%) scale(' + (1 + entrada * 0.06).toFixed(4) + ')'
-            : '';
+          f.style.transform = entrada > 0 ? 'translateY(' + (-entrada * 11).toFixed(2) + '%)' : '';
         }
       }
     }
 
     parallax();
-    addEventListener('scroll', parallax, { passive: true });
-    addEventListener('resize', parallax);
+    NA_ROLAGEM.push(parallax);
+
+    /* cenas longe da tela param de animar */
+    if ('IntersectionObserver' in window){
+      const olho = new IntersectionObserver(ls => {
+        for (const l of ls) l.target.classList.toggle('dormindo', !l.isIntersecting);
+      }, { rootMargin: '40% 0px' });
+      cenas.forEach(c => { if (c){ c.classList.add('dormindo'); olho.observe(c); } });
+    }
   })();
 
   /* ---------- o envelope sobe conforme a tela desce ---------- */
@@ -2043,8 +2082,7 @@
     }
 
     voar();
-    addEventListener('scroll', voar, { passive: true });
-    addEventListener('resize', voar);
+    NA_ROLAGEM.push(voar);
   })();
 
 
