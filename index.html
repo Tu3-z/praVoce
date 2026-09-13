@@ -119,6 +119,18 @@
     to  { transform: translateX(700px); }
   }
 
+  /* os dois espiando atrás do girassol */
+  .espia{
+    transform-box: fill-box;
+    transform-origin: bottom center;
+    animation: espiar 6s ease-in-out infinite;
+  }
+  .espia-b{ animation-duration: 6.8s; animation-delay: -3.1s; }
+  @keyframes espiar{
+    0%,100%{ transform: rotate(-4.5deg); }
+    50%    { transform: rotate(4.5deg); }
+  }
+
   /* movimento do papel */
   .balanca      { transform-origin: 600px 640px; animation: balancar 7s ease-in-out infinite; }
   .balanca-tarde{ transform-origin: 600px 640px; animation: balancar 7s ease-in-out infinite; animation-delay: -1.4s; }
@@ -845,7 +857,7 @@
 
   @media (prefers-reduced-motion: reduce){
     .balanca, .balanca-tarde, .nuvem-a, .nuvem-b, .polen, .polen-b, .seta,
-    .brisa, .brisa-b, .nuvem-noite, .lampada, .rastro span{ animation: none; }
+    .brisa, .brisa-b, .nuvem-noite, .lampada, .rastro span, .espia{ animation: none; }
     .fala{ transition: none; }
   }
 </style>
@@ -933,6 +945,18 @@
       <g filter="url(#recorte)">
         <path d="M-40,528 q180,-70 360,-24 q150,38 300,-14 q180,-62 360,4 q120,44 260,10 L1240,700 L-40,700 Z"
               fill="var(--colina-mid)" stroke="#F0FBE6" stroke-width="3"/>
+      </g>
+
+      <!-- dois espiando atrás do girassol -->
+      <g class="espia">
+        <g transform="rotate(-9 502 72)">
+          <image href="ovo1.png" x="450" y="22" width="104" height="101"/>
+        </g>
+      </g>
+      <g class="espia espia-b">
+        <g transform="rotate(8 709 68)">
+          <image href="ovo2.png" x="668" y="14" width="82" height="109"/>
+        </g>
       </g>
 
       <!-- o girassol -->
